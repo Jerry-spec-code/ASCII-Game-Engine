@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.mms": "cpp",
+        "ostream": "cpp"
+    }
+}
