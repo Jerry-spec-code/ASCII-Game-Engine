@@ -2,6 +2,7 @@
 #include <ncurses.h>
 #include <memory>
 #include "game.h"
+#include "gameobject.h"
 
 #include "iostream"
 using namespace std;
@@ -12,4 +13,8 @@ Game::~Game() {}
 
 void Game::go() {
     cout << "Made it here" << endl;
+}
+
+void Game::addGameObject(unique_ptr<GameObject> obj) {
+    objects.push_back(std::move(obj));
 }
