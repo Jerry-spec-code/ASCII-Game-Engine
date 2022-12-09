@@ -9,8 +9,8 @@ class GameObject {
     int xPos;
     int yPos;
 public:
-    GameObject() {}
-    ~GameObject() {}
+    GameObject();
+    ~GameObject();
     int getHeight();
     int getXPos();
     int getYPos();

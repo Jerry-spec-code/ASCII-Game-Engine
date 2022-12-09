@@ -1,16 +1,5 @@
-#include "gameobject.h"
+#include "rectangle.h"
 
-GameObject::GameObject() {}
-GameObject::~GameObject() {}
+Rectangle::Rectangle() {}
+Rectangle::~Rectangle() {}
 
-int GameObject::getHeight() {
-    return height;
-}
-
-int GameObject::getXPos() {
-    return xPos;
-}
-
-int GameObject::getYPos() {
-    return yPos;
-}

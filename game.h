@@ -9,12 +9,12 @@ using namespace std;
 class GameObject;
 
 class Game {
-    vector<unique_ptr<GameObject>> objects;
+    vector<shared_ptr<GameObject>> objects;
 public:
     Game();
     ~Game();
     void go();
-    void addGameObject(unique_ptr<GameObject> obj);
+    void addGameObject(shared_ptr<GameObject> obj);
 };
 
 #endif

@@ -15,6 +15,6 @@ void Game::go() {
     cout << "Made it here" << endl;
 }
 
-void Game::addGameObject(unique_ptr<GameObject> obj) {
-    objects.push_back(std::move(obj));
+void Game::addGameObject(shared_ptr<GameObject> obj) {
+    objects.push_back(obj);
 }

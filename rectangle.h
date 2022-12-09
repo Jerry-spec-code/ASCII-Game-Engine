@@ -1,19 +1,14 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
+#include "gameobject.h"
 
 #include <iostream>
 using namespace std;
 
-class GameObject {
-    int height;
-    int xPos;
-    int yPos;
+class Rectangle: public GameObject {
 public:
-    GameObject() {}
-    ~GameObject() {}
-    int getHeight();
-    int getXPos();
-    int getYPos();
+    Rectangle();
+    ~Rectangle();
 };
 
 #endif

@@ -6,9 +6,7 @@
 using namespace std;
 
 int main() {
-    unique_ptr<Game> g = make_unique<Game>();
+    shared_ptr<Game> g = make_shared<Game>();
     g->go();
-    // unique_ptr<GameObject> obj = make_unique<GameObject>();
-    // obj->running();
     return 0;
 }
