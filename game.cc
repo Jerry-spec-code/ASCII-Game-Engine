@@ -12,12 +12,7 @@ Game::Game() {}
 
 Game::~Game() {}
 
-void Game::go() {
-    setlocale(LC_ALL, "");
-    initscr();
-    // refresh();
-    // endwin();
-}
+void Game::go() {}
 
 void Game::addGameObject(shared_ptr<GameObject> obj) {
     objects.push_back(obj);

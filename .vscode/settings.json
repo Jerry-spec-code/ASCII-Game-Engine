@@ -2,6 +2,7 @@
     "files.associations": {
         "*.mms": "cpp",
         "ostream": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "vector": "cpp"
     }
 }
