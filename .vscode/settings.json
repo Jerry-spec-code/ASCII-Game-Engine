@@ -3,6 +3,7 @@
         "*.mms": "cpp",
         "ostream": "cpp",
         "memory": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string": "cpp"
     }
 }

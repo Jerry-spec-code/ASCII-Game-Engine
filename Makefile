@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAG = -std=c++14 Wall -MMD
-EXEC = build
+EXEC = vm
 OBJECTS = main.o game.o gameobject.o rectangle.o
 DEPENDS = ${OBJECTS:.o=.d}
 ${EXEC}: ${OBJECTS}
