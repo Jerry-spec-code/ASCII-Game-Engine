@@ -1,5 +1,6 @@
 #ifndef BORDER_H
 #define BORDER_H
+#include "border.h"
 
 #include <iostream>
 using namespace std;
