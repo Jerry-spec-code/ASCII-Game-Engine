@@ -6,6 +6,7 @@
 using namespace std;
 
 class Rectangle: public GameObject {
+    int length;
 public:
     Rectangle();
     ~Rectangle();
