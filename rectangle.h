@@ -7,6 +7,8 @@ using namespace std;
 
 class Rectangle: public GameObject {
     int length;
+    int width;
+    vector<shared_ptr<tuple<int, int, char>>> rectangle;
 public:
     Rectangle();
     ~Rectangle();
