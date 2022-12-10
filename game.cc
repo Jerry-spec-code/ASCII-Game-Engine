@@ -5,7 +5,7 @@
 #include "gameobject.h"
 #include <ncurses.h>
 
-#include "iostream"
+#include <iostream>
 using namespace std;
 
 Game::Game() {}
