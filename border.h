@@ -11,13 +11,13 @@ using namespace std;
 
 class Border {
     const int borderLength = 80;
-    const int borderWidth = 22;
+    const int borderHeight = 22;
     shared_ptr<Bitmap> border;
 public:
     Border();
     ~Border();
     const int getBorderLength();
-    const int getBorderWidth();
+    const int getBorderHeight();
     shared_ptr<Bitmap> getBorder();
 private:
     bool isCorner(int i, int j) const;

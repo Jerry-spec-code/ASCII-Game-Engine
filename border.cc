@@ -3,8 +3,8 @@
 
 Border::Border() {
     border = make_shared<Bitmap>();
-    for (int i = 0; i < borderLength; i++) {
-        for (int j = 0; j < borderWidth; j++) {
+    for (int i = 0; i < borderHeight; i++) {
+        for (int j = 0; j < borderLength; j++) {
             if (isCorner(i, j)) {
                 border->push_back(make_shared<tuple<int, int, char>>(i, j, '+'));
             }
@@ -24,8 +24,8 @@ const int Border::getBorderLength() {
     return borderLength;
 }
 
-const int Border::getBorderWidth() {
-    return borderWidth;
+const int Border::getBorderHeight() {
+    return borderHeight;
 }
 
 shared_ptr<Bitmap> Border::getBorder() {
@@ -33,11 +33,11 @@ shared_ptr<Bitmap> Border::getBorder() {
 }
 
 bool Border::isCorner(int i, int j) const {
-    return i == 0 && j == 0 || i == borderLength - 1 && j == 0 || i == 0 && j == borderWidth - 1 || i == borderLength - 1 && j == borderWidth - 1;
+    return i == 0 && j == 0 || i == borderHeight - 1 && j == 0 || i == 0 && j == borderLength - 1 || i == borderHeight - 1 && j == borderLength - 1;
 }
 bool Border::isBorderRow(int i, int j) const {
-    return i == 0 || i == borderLength - 1;
+    return i == 0 || i == borderHeight - 1;
 }
 bool Border::isBorderColumn(int i, int j) const {
-    return j == 0 || j == borderWidth - 1;   
+    return j == 0 || j == borderLength - 1;   
 }
