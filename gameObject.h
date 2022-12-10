@@ -20,6 +20,7 @@ public:
     void setYPos(int y);
     void setPos(int x, int y);
     void setPos(int x, int y, int height);
+    virtual void getData();
 };
 
 #endif
