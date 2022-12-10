@@ -6,13 +6,13 @@ Border::Border() {
     for (int i = 0; i < borderHeight; i++) {
         for (int j = 0; j < borderLength; j++) {
             if (isCorner(i, j)) {
-                border->push_back(make_shared<tuple<int, int, char>>(i, j, '+'));
+                border->push_back(tuple<int, int, char>(i, j, '+'));
             }
             else if (isBorderRow(i, j)) {
-                border->push_back(make_shared<tuple<int, int, char>>(i, j, '-'));
+                border->push_back(tuple<int, int, char>(i, j, '-'));
             }
             else if (isBorderColumn(i, j)) {
-                border->push_back(make_shared<tuple<int, int, char>>(i, j, '|'));
+                border->push_back(tuple<int, int, char>(i, j, '|'));
             }
         }
     }
