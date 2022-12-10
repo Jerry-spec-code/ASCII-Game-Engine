@@ -15,9 +15,7 @@ class Border {
 public:
     Border();
     ~Border();
-    vector<shared_ptr<Bitmap> > getBorderInfo() {
-        return borderInfo;
-    }
+    vector<shared_ptr<Bitmap> > getBorderInfo();
 };
 
 #endif

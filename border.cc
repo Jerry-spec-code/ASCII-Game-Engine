@@ -16,6 +16,6 @@ Border::Border() {
 }
 Border::~Border() {}
 
-vector<shared_ptr<Bitmap> > getBorderInfo() {
-    
+vector<shared_ptr<Bitmap> > Border::getBorderInfo() {
+    return borderInfo;
 }
