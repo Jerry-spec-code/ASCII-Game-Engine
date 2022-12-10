@@ -15,6 +15,8 @@ class Border {
 public:
     Border();
     ~Border();
+    const int getBorderLength();
+    const int getBorderWidth();
     vector<shared_ptr<Bitmap> > getBorderInfo();
 };
 

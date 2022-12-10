@@ -16,6 +16,15 @@ Border::Border() {
 }
 Border::~Border() {}
 
+const int Border::getBorderLength() {
+    return borderLength;
+}
+
+const int Border::getBorderWidth() {
+    return borderWidth;
+}
+
+
 vector<shared_ptr<Bitmap> > Border::getBorderInfo() {
     return borderInfo;
 }

@@ -14,7 +14,6 @@ Game::~Game() {}
 
 void Game::go() {
     initscr();			/* Start curses mode 		  */
-    raw();
 	printw("Hello World !!!");	/* Print Hello World		  */
 	refresh();			/* Print it on to the real screen */
 	getch();			/* Wait for user input */
