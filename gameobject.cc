@@ -29,6 +29,12 @@ void GameObject::setYPos(int y) {
 }
 
 void GameObject::setPos(int x, int y) {
-    this->x = x;
-    this->y = y;
+    setXPos(x);
+    setYPos(y);
+}
+
+void GameObject::setPos(int x, int y, int height) {
+    setXPos(x);
+    setYPos(y);
+    setHeight(height);
 }

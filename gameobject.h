@@ -19,6 +19,7 @@ public:
     void setXPos(int x);
     void setYPos(int y);
     void setPos(int x, int y);
+    void setPos(int x, int y, int height);
 };
 
 #endif
