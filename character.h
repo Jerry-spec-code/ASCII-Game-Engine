@@ -6,9 +6,11 @@
 using namespace std;
 
 class Character: public GameObject {
+    char c;
 public:
-    Character();
+    Character(char c, int x, int y, int height);
     ~Character();
+    void getCharacter();
 };
 
 #endif

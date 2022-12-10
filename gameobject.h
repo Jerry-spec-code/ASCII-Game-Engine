@@ -6,8 +6,8 @@ using namespace std;
 
 class GameObject {
     int height;
-    int xPos;
-    int yPos;
+    int x;
+    int y;
 public:
     GameObject();
     ~GameObject();

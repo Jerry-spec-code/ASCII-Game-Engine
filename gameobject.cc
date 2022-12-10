@@ -8,9 +8,9 @@ int GameObject::getHeight() {
 }
 
 int GameObject::getXPos() {
-    return xPos;
+    return x;
 }
 
 int GameObject::getYPos() {
-    return yPos;
+    return y;
 }
