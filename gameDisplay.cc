@@ -23,7 +23,7 @@ void GameDisplay::doDisplay() {
         if (typeid(x) == typeid(Character)) {
             cout << "Compiler is a liar" << endl;
         }
-        if (typeid(*objects[i]) == typeid(Character)) {
+        else if (typeid(*objects[i]) == typeid(Character)) {
             displayCharacter(static_cast<Character &> (*objects[i]));
         }
         else {

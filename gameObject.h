@@ -15,12 +15,11 @@ public:
     int getHeight();
     int getXPos();
     int getYPos();
-    void setHeight(int height);
+    virtual void setHeight(int height);
     void setXPos(int x);
     void setYPos(int y);
     void setPos(int x, int y);
     void setPos(int x, int y, int height);
-    virtual void getData();
 };
 
 #endif
