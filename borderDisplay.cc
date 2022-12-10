@@ -1,9 +1,13 @@
 #include "borderDisplay.h"
 #include <ncurses.h>
 
+#include <iostream>
+using namespace std;
+
 BorderDisplay::BorderDisplay() {}
 BorderDisplay::~BorderDisplay() {}
 
 void BorderDisplay::doDisplay() {
-    printw("Hello World !!!");	/* Print Hello World		  */
+    cout << "Made it here " << endl;
+   // printw("Hello World !!!");	/* Print Hello World		  */
 }   
