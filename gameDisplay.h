@@ -21,9 +21,9 @@ public:
     void setObjects(vector<shared_ptr<GameObject>> objects);
 private:
     void doDisplay() override;
-    void displayCharacter(shared_ptr<Character>);
-    void displayRectangle(shared_ptr<Rectangle>);
-    void displayBitmap(shared_ptr<Bitmap>);
+    void displayCharacter(Character &c);
+    void displayRectangle(Rectangle &r);
+    void displayBitmap(Bitmap &b);
 };
 
 #endif

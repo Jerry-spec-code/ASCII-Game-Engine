@@ -19,7 +19,11 @@ void GameDisplay::setObjects(vector<shared_ptr<GameObject>> objects) {
 void GameDisplay::doDisplay() {
     for (int i = 0; i < objects.size(); i++) {
         if (typeid(objects[i]) == typeid(shared_ptr<Character>)) {
-            displayCharacter(objects[i]);
+            displayCharacter(static_cast<Character &> (*objects[i]));
         }
     }
 }   
+
+void displayCharacter(Character &c) {
+    mvaddch(c.getXPos(), c.getYPos(), c.getCharacter());
+}
