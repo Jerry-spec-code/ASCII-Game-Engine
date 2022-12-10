@@ -9,6 +9,7 @@ class GameObject {
     int x;
     int y;
 public:
+    GameObject();    
     GameObject(int x, int y, int height);
     ~GameObject();
     int getHeight();
