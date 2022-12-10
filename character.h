@@ -10,7 +10,8 @@ class Character: public GameObject {
 public:
     Character(char c, int x, int y, int height);
     ~Character();
-    void getCharacter();
+    void setCharacter(char c);
+    char getCharacter();
 };
 
 #endif
