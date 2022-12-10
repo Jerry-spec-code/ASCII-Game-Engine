@@ -1,6 +1,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
-#include "gameobject.h"
+#include "gameObject.h"
 
 #include <iostream>
 using namespace std;

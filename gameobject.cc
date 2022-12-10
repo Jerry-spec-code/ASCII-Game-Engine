@@ -1,4 +1,4 @@
-#include "gameobject.h"
+#include "gameObject.h"
 
 GameObject::GameObject() {}
 GameObject::GameObject(int x, int y, int height): x{x}, y{y}, height{height} {}

@@ -2,7 +2,8 @@
 #include <ncurses.h>
 #include <memory>
 #include "game.h"
-#include "gameobject.h"
+#include "gameObject.h"
+#include "gameDisplay.h"
 #include "borderDisplay.h"
 #include <ncurses.h>
 
@@ -14,9 +15,11 @@ Game::Game() {}
 Game::~Game() {}
 
 void Game::go() {
-    shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
     initscr();			/* Start curses mode 		  */
-	display_border->display();
+	shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
+    display_border->display();
+    shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
+    display_objects->display();
 	refresh();			/* Print it on to the real screen */
 	getch();			/* Wait for user input */
 	endwin();			/* End curses mode		  */

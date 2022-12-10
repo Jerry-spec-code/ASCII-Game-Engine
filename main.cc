@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 #include "game.h"
-#include "gameobject.h"
+#include "gameObject.h"
 using namespace std;
 
 //Flags
@@ -18,6 +18,9 @@ int main(int argc, char* argv[]) {
     }
     if (argc == 1 || string(argv[1]) == "-inv") {
         shared_ptr<Game> g = make_shared<Game>();
+        // g->add(gameObject1);
+        // g->add(gameObject2);
+        // ...
         g->go();
     }
     else if(string(argv[1]) == "-drop") {

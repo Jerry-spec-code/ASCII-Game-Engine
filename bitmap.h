@@ -1,6 +1,6 @@
 #ifndef BITMAP_H
 #define BITMAP_H
-#include "gameobject.h"
+#include "gameObject.h"
 #include <memory>
 #include <vector>
 

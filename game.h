@@ -9,7 +9,7 @@ using namespace std;
 class GameObject;
 
 class Game {
-    vector<shared_ptr<GameObject> > objects;
+    vector<shared_ptr<GameObject>> objects;
 public:
     Game();
     ~Game();

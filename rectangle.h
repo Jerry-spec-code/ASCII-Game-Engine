@@ -1,6 +1,6 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-#include "gameobject.h"
+#include "gameObject.h"
 #include <vector>
 
 #include <iostream>
