@@ -19,7 +19,7 @@ void GameDisplay::setObjects(vector<shared_ptr<GameObject>> objects) {
 
 void GameDisplay::doDisplay() {
     for (int i = 0; i < objects.size(); i++) {
-        auto x = dynamic_cast<Character &>(*objects[i]);
+        auto x = dynamic_cast<GameObject &>(*objects[i]);
         if (typeid(x) == typeid(Character)) {
             cout << "Compiler is a liar" << endl;
         }
