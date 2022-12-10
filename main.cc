@@ -4,6 +4,7 @@
 #include <string>
 #include "game.h"
 #include "gameObject.h"
+#include "character.h"
 using namespace std;
 
 //Flags
@@ -18,9 +19,10 @@ int main(int argc, char* argv[]) {
     }
     if (argc == 1 || string(argv[1]) == "-inv") {
         shared_ptr<Game> g = make_shared<Game>();
-        // g->add(gameObject1);
-        // g->add(gameObject2);
-        // ...
+        shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5, 1);
+        shared_ptr<GameObject> fly = make_shared<Character>('X', 5, 15, 1);
+        g->addGameObject(iceCream);
+        g->addGameObject(fly);
         g->go();
     }
     else if(string(argv[1]) == "-drop") {
