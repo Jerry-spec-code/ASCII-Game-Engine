@@ -24,6 +24,6 @@ void GameDisplay::doDisplay() {
     }
 }   
 
-void displayCharacter(Character &c) {
+void GameDisplay::displayCharacter(Character &c) {
     mvaddch(c.getXPos(), c.getYPos(), c.getCharacter());
 }
