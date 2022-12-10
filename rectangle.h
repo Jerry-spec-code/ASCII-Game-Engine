@@ -1,6 +1,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 #include "gameobject.h"
+#include <vector>
 
 #include <iostream>
 using namespace std;
@@ -8,10 +9,14 @@ using namespace std;
 class Rectangle: public GameObject {
     int length;
     int width;
-    vector<shared_ptr<tuple<int, int, char>>> rectangle;
+    char c;
 public:
-    Rectangle();
+    Rectangle(int length, int width, int x, int y, int height, char c);
     ~Rectangle();
+    int getLength();
+    void setLength(int length);
+    int getWidth();
+    void setWidth(int width);
 };
 
 #endif
