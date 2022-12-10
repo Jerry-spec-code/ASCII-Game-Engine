@@ -12,7 +12,7 @@ BorderDisplay::~BorderDisplay() {}
 
 void BorderDisplay::doDisplay() {
     shared_ptr<Border> border = make_shared<Border>();
-    WINDOW *win = newwin(border->getBorderWidth(), border->getBorderLength(), 0, 0);
+    WINDOW *win = newwin(border->getBorderLength(), border->getBorderWidth(), 0, 0);
     printw("Hello World !!!");	/* Print Hello World		  */
     shared_ptr<Bitmap> map = border->getBorder();
     vector<shared_ptr<tuple<int, int, char>>> borderArray = map->getMap();
