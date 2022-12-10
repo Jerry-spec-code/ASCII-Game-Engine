@@ -4,7 +4,7 @@ EXEC = exec
 OBJECTS = main.o game.o gameobject.o rectangle.o
 DEPENDS = ${OBJECTS:.o=.d}
 ${EXEC}: ${OBJECTS}
-	${CXX} ${OBJECTS} -o ${EXEC}
+	${CXX} ${OBJECTS} -lncurses -o ${EXEC}
 -include ${DEPENDS}
 PHONY:clean
 clean:
