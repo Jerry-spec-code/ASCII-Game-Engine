@@ -18,7 +18,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     if (argc == 1 || string(argv[1]) == "-drop") {
-        cout << "Made it here" << endl;
         shared_ptr<Game> g = make_shared<Game>();
         shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5, 1);
         shared_ptr<GameObject> fly = make_shared<Character>('X', 5, 15, 1);

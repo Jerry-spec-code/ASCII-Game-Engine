@@ -4,6 +4,7 @@
 #include "character.h"
 #include <ncurses.h>
 #include <memory>
+#include <typeinfo>
 
 #include <iostream>
 using namespace std;
@@ -18,8 +19,16 @@ void GameDisplay::setObjects(vector<shared_ptr<GameObject>> objects) {
 
 void GameDisplay::doDisplay() {
     for (int i = 0; i < objects.size(); i++) {
-        if (typeid(objects[i]) == typeid(shared_ptr<Character>)) {
+        if (dynamic_cast<Character &> (*objects[i])) {
+            cout << "Compiler is a liar" << endl;
+        }
+        if (typeid(*objects[i]) == typeid(Character)) {
             displayCharacter(static_cast<Character &> (*objects[i]));
+        }
+        else {
+            cout << typeid(*objects[i]).name() << endl;
+            cout << typeid(Character).name() << endl;
+            break;
         }
     }
 }   
