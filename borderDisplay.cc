@@ -17,6 +17,6 @@ void BorderDisplay::doDisplay() {
     shared_ptr<Bitmap> map = border->getBorder();
     vector<shared_ptr<tuple<int, int, char>>> borderArray = map->getMap();
     for (int i = 0; i < borderArray.size(); i++) {
-        mvaddch(std::get<1>(*borderArray[i]), std::get<0>(*borderArray[i]), std::get<2>(*borderArray[i]));
+        mvaddch(std::get<0>(*borderArray[i]), std::get<1>(*borderArray[i]), std::get<2>(*borderArray[i]));
     }
 }   
