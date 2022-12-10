@@ -2,6 +2,7 @@
 #define BORDER_H
 #include "border.h"
 #include "bitmap.h"
+#include <memory>
 #include <vector>
 #include <ncurses.h>
 
@@ -11,13 +12,17 @@ using namespace std;
 class Border {
     const int borderLength = 80;
     const int borderWidth = 22;
-    vector<shared_ptr<Bitmap> > borderInfo;
+    shared_ptr<Bitmap> border;
 public:
     Border();
     ~Border();
     const int getBorderLength();
     const int getBorderWidth();
-    vector<shared_ptr<Bitmap> > getBorderInfo();
+    shared_ptr<Bitmap> getBorder();
+private:
+    bool isCorner(int i, int j) const;
+    bool isBorderRow(int i, int j) const;
+    bool isBorderColumn(int i, int j) const;
 };
 
 #endif

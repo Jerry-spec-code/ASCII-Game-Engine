@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAG = -std=c++14 Wall -MMD
 EXEC = exec
-OBJECTS = main.o game.o gameobject.o rectangle.o
+OBJECTS = main.o game.o gameobject.o rectangle.o borderDisplay.o border.o bitmap.o
 DEPENDS = ${OBJECTS:.o=.d}
 ${EXEC}: ${OBJECTS}
 	${CXX} ${OBJECTS} -lncurses -o ${EXEC}
