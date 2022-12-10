@@ -12,7 +12,13 @@ Game::Game() {}
 
 Game::~Game() {}
 
-void Game::go() {}
+void Game::go() {
+    initscr();			/* Start curses mode 		  */
+	printw("Hello World !!!");	/* Print Hello World		  */
+	refresh();			/* Print it on to the real screen */
+	getch();			/* Wait for user input */
+	endwin();			/* End curses mode		  */
+}
 
 void Game::addGameObject(shared_ptr<GameObject> obj) {
     objects.push_back(obj);
