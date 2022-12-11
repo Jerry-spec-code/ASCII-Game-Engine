@@ -26,7 +26,8 @@ void IceCreamDrop::go() {
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
         display();
-        for (int i = 0; i < 10; i++) {
+        clock_t t = clock();
+        while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
             updateIceCreamPosition(action);	
