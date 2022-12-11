@@ -1,6 +1,7 @@
 #ifndef ICECREAMDROP_H
 #define ICECREAMDROP_H
 #include "game.h"
+#include "action.h"
 
 #include <iostream>
 using namespace std;

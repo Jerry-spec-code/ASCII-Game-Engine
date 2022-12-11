@@ -19,6 +19,7 @@ public:
     const int getBorderLength();
     const int getBorderHeight();
     shared_ptr<Bitmap> getBorder();
+    bool onBorder(int i, int j) const;
     bool isCorner(int i, int j) const;
     bool isBorderRow(int i, int j) const;
     bool isBorderColumn(int i, int j) const;

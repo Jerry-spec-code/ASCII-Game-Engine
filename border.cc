@@ -32,6 +32,10 @@ shared_ptr<Bitmap> Border::getBorder() {
     return border;
 }
 
+bool Border::onBorder(int i, int j) const {
+    return isCorner(i, j) || isBorderRow(i, j) || isBorderColumn(i, j);
+}
+
 bool Border::isCorner(int i, int j) const {
     return i == 0 && j == 0 || i == borderHeight - 1 && j == 0 || i == 0 && j == borderLength - 1 || i == borderHeight - 1 && j == borderLength - 1;
 }

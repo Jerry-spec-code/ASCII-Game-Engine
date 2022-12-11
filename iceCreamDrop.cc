@@ -83,7 +83,17 @@ void IceCreamDrop::makeFly(int x, int y) {
 }
 
 void IceCreamDrop::updateIceCreamPosition(Action action) {
-    if(action == Action::Right) {
+    if(action == Action::RIGHT) {
+        iceCream->setXPos(iceCream->getXPos() + 1);
+        if(border->onBorder(iceCream->getXPos(), iceCream->getYPos())) {
+            iceCream->setXPos(1);
+        }
+    }
+    else if (action == Action::LEFT) {
+        iceCream->setXPos(iceCream->getXPos() - 1);
+        if(border->onBorder(iceCream->getXPos(), iceCream->getYPos())) {
+            iceCream->setXPos(border->getBorderLength() - 1);
+        }
     }
 }
 
@@ -94,12 +104,12 @@ void IceCreamDrop::updateView() {
             objects[i]->setYPos(objects[i]->getYPos() - 1);
         }
     }
-    if (!makeNew) {
-        makeNew = true;
-    }
-    else {
+    if (makeNew) {
         makeNewPlatform(getLastPlatformHeight(), true);
         makeNew = false;
+    }
+    else {
+        makeNew = true;
     }
     if (iceCream->getYPos() < 1) {
         status = 0;
