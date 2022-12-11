@@ -22,13 +22,23 @@ void GameDisplay::doDisplay() {
         if (dynamic_cast<Character *>(objects[i].get())) {
             displayCharacter(static_cast<Character &> (*objects[i]));
         }
-        else {
-            cout << "Made it here" << endl;
-            break;
+        else if (dynamic_cast<Rectangle *>(objects[i].get())) { 
+            displayRectangle(static_cast<Rectangle &> (*objects[i]));
+        }
+        else if (dynamic_cast<Bitmap *>(objects[i].get())) { 
+            displayBitmap(static_cast<Bitmap &> (*objects[i]));
         }
     }
 }   
 
 void GameDisplay::displayCharacter(Character &c) {
     mvaddch(c.getXPos(), c.getYPos(), c.getCharacter());
+}
+
+void GameDisplay::displayRectangle(Rectangle &r) {
+
+}
+
+void GameDisplay::displayBitmap(Bitmap &b) {
+
 }
