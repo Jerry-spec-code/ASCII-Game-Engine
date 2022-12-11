@@ -7,6 +7,7 @@
 #include "character.h"
 #include "rectangle.h"
 #include <typeinfo>
+#include <vector>
 
 #include <iostream>
 using namespace std;

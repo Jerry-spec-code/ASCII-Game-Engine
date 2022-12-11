@@ -21,6 +21,7 @@ void Bitmap::remove(tuple<int, int, char> bit) {
     for (int i = 0; i < map.size(); i++) {
         if (bit == map[i]) {
             map.erase(map.begin() + i);
+            i--;
         }
     }
 }
