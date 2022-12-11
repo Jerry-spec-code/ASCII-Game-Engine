@@ -14,6 +14,7 @@ public:
 private:
     void positionPlatforms();
     void positionIceCream();
+    void updateView();
     int getLastPlatformHeight();
     int getRandomNumber(int lower, int higher);
 };
