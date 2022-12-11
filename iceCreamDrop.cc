@@ -23,7 +23,7 @@ IceCreamDrop::~IceCreamDrop() {}
 void IceCreamDrop::go() {			
     initscr();
     int i = 0;
-    while (status != 0 || i < 10) {
+    while (status != 0 || i < 20) {
         shared_ptr<Display> display_border = make_shared<BorderDisplay>();
         shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
         shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
@@ -67,10 +67,14 @@ void IceCreamDrop::makeNewPlatform(int y, bool addFly) {
     addGameObject(make_shared<Rectangle>(holeLocation - 1, 1, 1, y, 1, '-'));
     addGameObject(make_shared<Rectangle>(border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y, 1, '-'));
     if (addFly) {
-        int randNum = getRandomNumber(1, 5);
-        if (randNum == 1) {
-            // addGameObject(make_shared<Rectangle>(3, 1, holeLocation - 1, y - 1, 1, 'X'));   
-        }
+        makeFly(holeLocation - 1, y - 1);
+    }
+}
+
+void IceCreamDrop::makeFly(int x, int y) {
+    int randNum = getRandomNumber(1, flyFrequency);
+    if (randNum == 1) {
+        addGameObject(make_shared<Rectangle>(3, 1, x, y, 1, 'X'));
     }
 }
 
