@@ -1,7 +1,7 @@
 #include "keyboard.h"
 #include <string>
 
-CurseKeyboard::CurseKeyboard() {
+Keyboard::Keyboard() {
   setlocale(LC_ALL, "");
   mapping['w'] = Action::UP;
   mapping['d'] = Action::RIGHT;
@@ -13,7 +13,7 @@ CurseKeyboard::CurseKeyboard() {
   mapping[KEY_LEFT] = Action::LEFT;
 }
 
-Action CurseKeyboard::action(){
+Action Keyboard::action(){
   int n;
   while ( (n = getch()) == ERR ) continue;
 
