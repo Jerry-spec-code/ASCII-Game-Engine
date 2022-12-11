@@ -24,13 +24,6 @@ int main(int argc, char* argv[]) {
         shared_ptr<Game> g = make_shared<Game>();
         shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5, 1);
         shared_ptr<GameObject> fly = make_shared<Character>('X', 5, 15, 1);
-        if (dynamic_cast<Character *>(fly.get())) {
-            cout << "Yes" << endl;
-        }
-        else {
-            cout << typeid(dynamic_cast<Character *>(fly.get())).name() << endl;
-            cout << "No" << endl;
-        }
         g->addGameObject(iceCream);
         g->addGameObject(fly);
         g->go();
