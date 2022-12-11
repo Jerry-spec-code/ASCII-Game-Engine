@@ -104,10 +104,6 @@ void IceCreamDrop::updateView() {
     for (int i = 0; i < objects.size(); i++) {
         if (dynamic_cast<Character *>(objects[i].get()) || dynamic_cast<Rectangle *>(objects[i].get())) {
             objects[i]->setYPos(objects[i]->getYPos() - 1);
-            if (iceCream->getYPos() < 1) {
-                status = 0;
-                break;
-            }
             if(objects[i]->getYPos() < 1) {
                 removeGameObject(objects[i]);
                 i--;
