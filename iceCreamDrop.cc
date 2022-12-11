@@ -12,6 +12,7 @@
 #include <memory>
 #include <stdlib.h>    
 #include <time.h>
+#include "keyboard.h"
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
 upperBoundHole{3 * (border->getBorderLength() / 4)} {
@@ -22,18 +23,21 @@ IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::go() {			
     initscr();
-    int i = 0;
-    while (status != 0 || i < 20) {
+    shared_ptr<Controller> input = make_shared<Keyboard>();
+    while (status != 0) {
         shared_ptr<Display> display_border = make_shared<BorderDisplay>();
         shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
         shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
         display_objects->display();
         display_border->display();
         display_status->display();
-        refresh();			
-        getch();	
+        refresh();	
+        for (int i = 0; i < 10; i++) {
+            Action action = input->getAction();	
+            updateIceCreamPosition(action);	
+        }
+        getch();
         updateView();
-        ++i;
     }
     endwin();			
 }
@@ -75,6 +79,11 @@ void IceCreamDrop::makeFly(int x, int y) {
     int randNum = getRandomNumber(1, flyFrequency);
     if (randNum == 1) {
         addGameObject(make_shared<Rectangle>(3, 1, x, y, 1, 'X'));
+    }
+}
+
+void IceCreamDrop::updateIceCreamPosition(Action action) {
+    if(action == Action::Right) {
     }
 }
 
