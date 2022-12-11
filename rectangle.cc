@@ -23,3 +23,7 @@ void Rectangle::setLength(int length) {
 char Rectangle::getCharacter() {
     return c;
 }
+
+void Rectangle::setCharacter(char c) {
+    this->c = c;
+}

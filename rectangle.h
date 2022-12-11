@@ -17,6 +17,8 @@ public:
     void setLength(int length);
     int getWidth();
     void setWidth(int width);
+    char getCharacter();
+    void setCharacter(char c);
 };
 
 #endif
