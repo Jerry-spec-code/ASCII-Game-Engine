@@ -5,6 +5,7 @@
 #include "gameObject.h"
 #include "gameDisplay.h"
 #include "borderDisplay.h"
+#include "statusDisplay.h"
 #include <ncurses.h>
 
 #include <iostream>
@@ -15,10 +16,12 @@ Game::Game() {}
 Game::~Game() {}
 
 void Game::go() {
-	shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
+	shared_ptr<Display> display_border = make_shared<BorderDisplay>();
     display_border->display();
-    shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>(objects);
+    shared_ptr<Display> display_objects = make_shared<GameDisplay>(objects);
     display_objects->display();
+    shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
+    display_status->display();
 }
 
 void Game::addGameObject(shared_ptr<GameObject> obj) {

@@ -3,6 +3,7 @@
 
 class Display {
 public:
+    virtual ~Display() {}
     void display() {
         doDisplay();
     }
