@@ -38,7 +38,7 @@ void GameDisplay::displayCharacter(Character &c) {
 void GameDisplay::displayRectangle(Rectangle &r) {
     for (int i = 0; i < r.getWidth(); i++) {
         for (int j = 0; j < r.getLength(); j++) {
-            mvaddch(i, j, r.getCharacter());
+            mvaddch(i + r.getYPos(), j + r.getXPos(), r.getCharacter());
         }
     }
 }
