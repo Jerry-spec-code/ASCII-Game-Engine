@@ -32,13 +32,20 @@ void GameDisplay::doDisplay() {
 }   
 
 void GameDisplay::displayCharacter(Character &c) {
-    mvaddch(c.getXPos(), c.getYPos(), c.getCharacter());
+    mvaddch(c.getYPos(), c.getXPos(), c.getCharacter());
 }
 
 void GameDisplay::displayRectangle(Rectangle &r) {
-
+    for (int i = 0; i < r.getWidth(); i++) {
+        for (int j = 0; j < r.getLength(); j++) {
+            mvaddch(i, j, r.getCharacter());
+        }
+    }
 }
 
 void GameDisplay::displayBitmap(Bitmap &b) {
-
+    vector<tuple<int, int, char>> map = b.getMap();
+    for (int i = 0; i < map.size(); i++) {
+        mvaddch(get<1>(map[i]), get<0>(map[i]), get<2>(map[i]));
+    }
 }

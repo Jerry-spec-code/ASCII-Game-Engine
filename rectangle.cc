@@ -19,3 +19,7 @@ void Rectangle::setWidth(int width) {
 void Rectangle::setLength(int length) {
     this->length = length;
 }
+
+char Rectangle::getCharacter() {
+    return c;
+}
