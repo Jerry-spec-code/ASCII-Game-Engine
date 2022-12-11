@@ -19,6 +19,7 @@ void GameDisplay::setObjects(vector<shared_ptr<GameObject>> objects) {
 }
 
 void GameDisplay::doDisplay() {
+    clearScreen();
     for (int i = 0; i < objects.size(); i++) {
         if (dynamic_cast<Character *>(objects[i].get())) {
             displayCharacter(static_cast<Character &> (*objects[i]));
@@ -38,8 +39,12 @@ void GameDisplay::displayCharacter(Character &c) {
 
 void GameDisplay::clearScreen() {
     shared_ptr<Border> border = make_shared<Border>();
-    for (int i = 0; i < border->getHeight(); i++) {
-        // if (border->)
+    for (int i = 0; i < border->getBorderHeight(); i++) {
+        for (int j = 0; j < border->getBorderLength(); j++) {
+            if(!(border->isCorner(i, j) || border->isBorderColumn(i, j) || border->isBorderRow(i, j))) {
+                mvaddch(i, j, ' ');
+            }
+        }
     }
 }
 
