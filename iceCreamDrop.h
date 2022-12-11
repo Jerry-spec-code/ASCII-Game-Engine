@@ -15,4 +15,5 @@ private:
     void positionPlatforms();
     void positionIceCream();
     int getLastPlatformHeight();
+    int getRandomNumber(int lower, int higher);
 };

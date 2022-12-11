@@ -22,26 +22,30 @@ void IceCreamDrop::position() {
 }
 
 void IceCreamDrop::positionIceCream() {
+    shared_ptr<Border> border = make_shared<Border>();
     shared_ptr<GameObject> iceCream = make_shared<Character>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
     addGameObject(iceCream);
 }
 
 void IceCreamDrop::positionPlatforms() {
     shared_ptr<Border> border = make_shared<Border>();
+    int lowerBoundHole = border->getBorderLength() / 4;
+    int upperBoundHole = 3 * (border->getBorderLength() / 4);
     for (int i = firstPlatformHeight; i < border->getBorderHeight(); i += offset) {
-        addGameObject(make_shared<Rectangle>(border->getBorderLength() - 2, 1, 1, i, 1, '-'));
+        int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
+        addGameObject(make_shared<Rectangle>(holeLocation, 1, 1, i, 1, '-'));
+        addGameObject(make_shared<Rectangle>(border->getBorderLength() - 2 - holeLocation, 1, holeLocation, i, 1, '-'));
     }
 }
 
-int IceCreamDrop::getLastPlaformHeight() {
+int IceCreamDrop::getLastPlatformHeight() {
+    shared_ptr<Border> border = make_shared<Border>();
     int i = firstPlatformHeight;
     while (i < border->getBorderHeight()) {
         i += offset;
     }
     return i - offset; 
 }
-
-int IceCreamDrop::PlaformHeight()
 
 void IceCreamDrop::go() {
     initscr();			
@@ -54,4 +58,9 @@ void IceCreamDrop::go() {
     refresh();			
 	getch();			
 	endwin();	
+}
+
+int IceCreamDrop::getRandomNumber(int lower, int higher) {
+    srand (time(NULL));
+    return (rand() % higher) + lower;
 }
