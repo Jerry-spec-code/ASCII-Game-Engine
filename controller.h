@@ -1,5 +1,5 @@
-#ifndef ___CONTROLLER___H__
-#define ___CONTROLLER___H__
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include "action.h"
 #include <string>

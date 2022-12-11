@@ -1,3 +1,5 @@
+#ifndef ICECREAMDROP_H
+#define ICECREAMDROP_H
 #include "game.h"
 
 #include <iostream>
@@ -31,3 +33,5 @@ private:
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);
 };
+
+#endif

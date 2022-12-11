@@ -1,20 +1,20 @@
-#ifndef ___KEYBOARD___H__
-#define ___KEYBOARD___H__
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
 #include "controller.h"
 #include <iostream>
 #include <string>
-#include <memory>
 #include <map>
+#include <ncurses.h>
 
-class Keyboard: public Controller{
-  std::istream& in;
-  std::map<std::string,Action> theMap;
-  
+
+class Mapping;
+
+class CurseKeyboard: public Controller{
+  std::map<int,Action> mapping; 
+
   Action action() override;
-  void remap(const std::string& oldCmd, std::string& newCmd);
-  Action map(const std::string& cmd);
  public:
-  Keyboard(std::istream& in = std::cin);
+  CurseKeyboard();
 };
 #endif
