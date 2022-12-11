@@ -32,7 +32,7 @@ vector<string> StatusDisplay::getMessages() {
 void StatusDisplay::doDisplay() {
     shared_ptr<Border> border = make_shared<Border>();
     for (int i = 0; i < messages.size(); i++) {
-        mvprintw(border->getBorderHeight() + i, 0, "%s", messages[i]);
+        mvprintw(border->getBorderHeight() + i, 0, messages[i].c_str());
     }
 }   
 
