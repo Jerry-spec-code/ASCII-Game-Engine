@@ -16,7 +16,9 @@ public:
     virtual void position();
     virtual void go();
     void addGameObject(shared_ptr<GameObject> obj);
+    void removeGameObject(shared_ptr<GameObject> obj);
     vector<shared_ptr<GameObject>> getObjects();
+    bool isEmpty(int x, int y);
 };
 
 #endif
