@@ -12,8 +12,8 @@ class Game {
     vector<shared_ptr<GameObject>> objects;
 public:
     Game();
-    ~Game();
-    void go();
+    virtual ~Game();
+    virtual void go();
     void addGameObject(shared_ptr<GameObject> obj);
 };
 

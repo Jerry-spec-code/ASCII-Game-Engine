@@ -15,13 +15,18 @@ Game::Game() {}
 
 Game::~Game() {}
 
+// Default implementation
 void Game::go() {
+    initscr();		
 	shared_ptr<Display> display_border = make_shared<BorderDisplay>();
     display_border->display();
     shared_ptr<Display> display_objects = make_shared<GameDisplay>(objects);
     display_objects->display();
     shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
     display_status->display();
+    refresh();		
+	getch();		
+	endwin();		
 }
 
 void Game::addGameObject(shared_ptr<GameObject> obj) {
