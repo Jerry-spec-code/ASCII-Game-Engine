@@ -30,4 +30,5 @@
 *.exe
 *.out
 *.app
-exec
+exec1
+exec2
