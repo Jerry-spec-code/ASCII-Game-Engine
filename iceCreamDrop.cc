@@ -7,17 +7,44 @@
 #include "gameDisplay.h"
 #include "borderDisplay.h"
 #include "statusDisplay.h"
+#include "border.h"
 #include <vector>
+#include <memory>
+#include <stdlib.h>    
+#include <time.h>
 
 IceCreamDrop::IceCreamDrop() {}
 IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::position() {
-    shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5, 1);
-    shared_ptr<GameObject> fly = make_shared<Rectangle>(10, 1, 3, 4, 1, 'A');
-    addGameObject(iceCream);
-    addGameObject(fly);
+    positionPlatforms();
+    
+    // shared_ptr<GameObject> fly = make_shared<Rectangle>(10, 1, 3, 4, 1, 'A');
+    
+    // addGameObject(fly);
 }
+
+void IceCreamDrop::positionIceCream() {
+    shared_ptr<GameObject> iceCream = make_shared<Character>('O', 39, 1, 1);
+    addGameObject(iceCream);
+}
+
+void IceCreamDrop::positionPlatforms() {
+    shared_ptr<Border> border = make_shared<Border>();
+    for (int i = firstPlatformHeight; i < border->getBorderHeight(); i += offset) {
+        addGameObject(make_shared<Rectangle>(border->getBorderLength() - 2, 1, 1, i, 1, '-'));
+    }
+}
+
+int IceCreamDrop::getLastPlaformHeight() {
+    int i = firstPlatformHeight;
+    while (i < border->getBorderHeight()) {
+        i += offset;
+    }
+    return i - offset; 
+}
+
+int IceCreamDrop::PlaformHeight()
 
 void IceCreamDrop::go() {
     initscr();			
