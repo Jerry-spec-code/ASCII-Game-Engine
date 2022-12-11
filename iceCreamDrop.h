@@ -3,9 +3,17 @@
 #include <iostream>
 using namespace std;
 
+class GameObject;
+class Border;
+
 class IceCreamDrop : public Game {
-    int firstPlatformHeight = 2;
-    int offset = 2;
+    shared_ptr<GameObject> iceCream;
+    shared_ptr<Border> border;
+    const int firstPlatformHeight = 2;
+    const int offset = 2;
+    const int lowerBoundHole;
+    const int upperBoundHole;
+    int status = 1; //1 is still playing, 0 means lost .
 public:
     IceCreamDrop();
     ~IceCreamDrop();
@@ -16,5 +24,6 @@ private:
     void positionIceCream();
     void updateView();
     int getLastPlatformHeight();
+    void makeNewPlatform(int height, bool fly = false);
     int getRandomNumber(int lower, int higher);
 };
