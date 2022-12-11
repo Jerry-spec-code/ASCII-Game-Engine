@@ -1,5 +1,6 @@
 #include "gameDisplay.h"
 #include "bitmap.h"
+#include "border.h"
 #include "rectangle.h"
 #include "character.h"
 #include <ncurses.h>
@@ -33,6 +34,13 @@ void GameDisplay::doDisplay() {
 
 void GameDisplay::displayCharacter(Character &c) {
     mvaddch(c.getYPos(), c.getXPos(), c.getCharacter());
+}
+
+void GameDisplay::clearScreen() {
+    shared_ptr<Border> border = make_shared<Border>();
+    for (int i = 0; i < border->getHeight(); i++) {
+        // if (border->)
+    }
 }
 
 void GameDisplay::displayRectangle(Rectangle &r) {

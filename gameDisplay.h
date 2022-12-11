@@ -19,6 +19,7 @@ public:
     GameDisplay(vector<shared_ptr<GameObject>> objects);
     ~GameDisplay();
     void setObjects(vector<shared_ptr<GameObject>> objects);
+    void clearScreen();
 private:
     void doDisplay() override;
     void displayCharacter(Character &c);

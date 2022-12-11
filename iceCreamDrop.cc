@@ -20,20 +20,20 @@ upperBoundHole{3 * (border->getBorderLength() / 4)} {
 
 IceCreamDrop::~IceCreamDrop() {}
 
-void IceCreamDrop::go() {
-    initscr();			
+void IceCreamDrop::go() {			
     shared_ptr<Display> display_border = make_shared<BorderDisplay>();
     shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
     shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
+    initscr();
     for (int i = 0; i < 7; i++) {
         display_objects->display();
         display_border->display();
         display_status->display();
         refresh();			
-        getch();
-        // updateView();
-    }			
-	endwin();	
+        getch();	
+        updateView();
+    }
+    endwin();			
 }
 
 void IceCreamDrop::position() {
@@ -63,7 +63,6 @@ int IceCreamDrop::getLastPlatformHeight() {
 
 void IceCreamDrop::makeNewPlatform(int y, bool fly) {
     int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
-    cout << holeLocation << endl;
     addGameObject(make_shared<Rectangle>(holeLocation - 1, 1, 1, y, 1, '-'));
     addGameObject(make_shared<Rectangle>(border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y, 1, '-'));
 }
