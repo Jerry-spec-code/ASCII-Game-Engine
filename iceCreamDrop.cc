@@ -32,11 +32,13 @@ void IceCreamDrop::go() {
         display_border->display();
         display_status->display();
         refresh();	
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 40; i++) {
+            noecho();
             Action action = input->getAction();	
             updateIceCreamPosition(action);	
+            display_objects->display();
+            refresh();	
         }
-        getch();
         updateView();
     }
     endwin();			
@@ -85,14 +87,14 @@ void IceCreamDrop::makeFly(int x, int y) {
 void IceCreamDrop::updateIceCreamPosition(Action action) {
     if(action == Action::RIGHT) {
         iceCream->setXPos(iceCream->getXPos() + 1);
-        if(border->onBorder(iceCream->getXPos(), iceCream->getYPos())) {
+        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
             iceCream->setXPos(1);
         }
     }
     else if (action == Action::LEFT) {
         iceCream->setXPos(iceCream->getXPos() - 1);
-        if(border->onBorder(iceCream->getXPos(), iceCream->getYPos())) {
-            iceCream->setXPos(border->getBorderLength() - 1);
+        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
+            iceCream->setXPos(border->getBorderLength() - 2);
         }
     }
 }
