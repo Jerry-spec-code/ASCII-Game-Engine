@@ -18,14 +18,11 @@ IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::position() {
     positionPlatforms();
-    
-    // shared_ptr<GameObject> fly = make_shared<Rectangle>(10, 1, 3, 4, 1, 'A');
-    
-    // addGameObject(fly);
+    positionIceCream();
 }
 
 void IceCreamDrop::positionIceCream() {
-    shared_ptr<GameObject> iceCream = make_shared<Character>('O', 39, 1, 1);
+    shared_ptr<GameObject> iceCream = make_shared<Character>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
     addGameObject(iceCream);
 }
 

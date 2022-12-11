@@ -13,5 +13,6 @@ public:
     void go() override;
 private:
     void positionPlatforms();
+    void positionIceCream();
     int getLastPlatformHeight();
 };
