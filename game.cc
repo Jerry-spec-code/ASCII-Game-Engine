@@ -57,9 +57,16 @@ bool Game::isEmpty(int x, int y) {
         return false;
     }
     for (int i = 0; i < objects.size(); i++) {
-        if (dynamic_cast<Character *>(objects[i].get()) || dynamic_cast<Rectangle *>(objects[i].get())) {
+        if (dynamic_cast<Character *>(objects[i].get())) {
             if (objects[i]->getYPos() == y && objects[i]->getXPos() == x) {
                 return false;
+            }
+        }
+        else if (dynamic_cast<Rectangle *>(objects[i].get())) {
+            Rectangle rect = static_cast<Rectangle &>(*objects[i]);
+            if (rect.getXPos() < x && x < rect.getXPos() + rect.getLength()
+                && rect.getYPos() < y && y < rect.getYPos() + rect.getWidth()) {
+                    return false;
             }
         }
         else if (dynamic_cast<Bitmap *>(objects[i].get())) { 
