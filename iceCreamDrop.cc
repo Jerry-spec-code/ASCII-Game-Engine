@@ -7,6 +7,7 @@
 #include "gameDisplay.h"
 #include "borderDisplay.h"
 #include "statusDisplay.h"
+#include <vector>
 
 IceCreamDrop::IceCreamDrop() {}
 IceCreamDrop::~IceCreamDrop() {}
