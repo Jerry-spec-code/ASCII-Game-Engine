@@ -15,6 +15,8 @@ Game::Game() {}
 
 Game::~Game() {}
 
+void Game::position() {}
+
 // Default implementation
 void Game::go() {
     initscr();		
@@ -31,4 +33,8 @@ void Game::go() {
 
 void Game::addGameObject(shared_ptr<GameObject> obj) {
     objects.push_back(obj);
+}
+
+vector<shared_ptr<GameObject>> Game::getObjects() {
+    return objects; 
 }

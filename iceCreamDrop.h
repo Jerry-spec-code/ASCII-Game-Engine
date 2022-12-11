@@ -7,5 +7,6 @@ class IceCreamDrop : public Game {
 public:
     IceCreamDrop();
     ~IceCreamDrop();
+    void position() override;
     void go() override;
 };

@@ -13,6 +13,7 @@ class Game {
 public:
     Game();
     virtual ~Game();
+    virtual void position();
     virtual void go();
     void addGameObject(shared_ptr<GameObject> obj);
 };

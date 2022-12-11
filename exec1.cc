@@ -14,6 +14,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     shared_ptr<Game> g = make_shared<IceCreamDrop>();
+    g->position();
     g->go();
     return 0;
 }
