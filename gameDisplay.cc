@@ -19,21 +19,15 @@ void GameDisplay::setObjects(vector<shared_ptr<GameObject>> objects) {
 
 void GameDisplay::doDisplay() {
     for (int i = 0; i < objects.size(); i++) {
-        // cout << "Hi?" << endl;
-        GameObject c = *objects[i];
-
-        auto x = dynamic_cast<Character &>(c);
-        // cout << "Hello?" << endl;
+        // auto x = dynamic_cast<Character &>(*objects[i]);
         // if (typeid(x) == typeid(Character)) {
         //     cout << "Compiler is a liar" << endl;
         // }
-        if (typeid(x) == typeid(Character)) {
+        if (dynamic_cast<Character *>(objects[i].get())) {
             displayCharacter(static_cast<Character &> (*objects[i]));
         }
         else {
-            displayCharacter(static_cast<Character &> (*objects[i]));
-            cout << typeid(*objects[i]).name() << endl;
-            cout << typeid(Character).name() << endl;
+            cout << "Made it here" << endl;
             break;
         }
     }
