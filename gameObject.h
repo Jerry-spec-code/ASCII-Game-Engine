@@ -11,11 +11,11 @@ class GameObject {
 public:
     GameObject();    
     GameObject(int x, int y, int height);
-    ~GameObject();
+    virtual ~GameObject();
     int getHeight();
     int getXPos();
     int getYPos();
-    virtual void setHeight(int height);
+    void setHeight(int height);
     void setXPos(int x);
     void setYPos(int y);
     void setPos(int x, int y);

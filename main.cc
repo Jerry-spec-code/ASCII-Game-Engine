@@ -28,6 +28,7 @@ int main(int argc, char* argv[]) {
             cout << "Yes" << endl;
         }
         else {
+            cout << typeid(dynamic_cast<Character *>(fly.get())).name() << endl;
             cout << "No" << endl;
         }
         g->addGameObject(iceCream);
