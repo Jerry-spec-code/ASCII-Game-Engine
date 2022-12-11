@@ -14,23 +14,24 @@
 #include <time.h>
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
-upperBoundHole{3 * (border->getBorderLength() / 4)}, 
-iceCream{make_shared<Character>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1)} {}
+upperBoundHole{3 * (border->getBorderLength() / 4)} {
+    iceCream = make_shared<Character>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
+}
 
 IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::go() {
     initscr();			
-    for (int i = 0; i < 3; i++) {
-        shared_ptr<Display> display_border = make_shared<BorderDisplay>();
-        display_border->display();
-        shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
+    shared_ptr<Display> display_border = make_shared<BorderDisplay>();
+    shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
+    shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
+    for (int i = 0; i < 7; i++) {
         display_objects->display();
-        shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
+        display_border->display();
         display_status->display();
         refresh();			
         getch();
-        updateView();
+        // updateView();
     }			
 	endwin();	
 }
@@ -60,8 +61,9 @@ int IceCreamDrop::getLastPlatformHeight() {
     return i - offset; 
 }
 
-void IceCreamDrop::makeNewPlatform(int y, bool fly = false) {
+void IceCreamDrop::makeNewPlatform(int y, bool fly) {
     int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
+    cout << holeLocation << endl;
     addGameObject(make_shared<Rectangle>(holeLocation - 1, 1, 1, y, 1, '-'));
     addGameObject(make_shared<Rectangle>(border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y, 1, '-'));
 }
@@ -70,14 +72,7 @@ void IceCreamDrop::updateView() {
     vector<shared_ptr<GameObject>> objects = getObjects();
     for (int i = 0; i < objects.size(); i++) {
         if (dynamic_cast<Character *>(objects[i].get()) || dynamic_cast<Rectangle *>(objects[i].get())) {
-            objects[i]->setYPos(objects[i]->getYPos() - offset);
-        }
-        else if (dynamic_cast<Bitmap *>(objects[i].get())) { 
-            Bitmap *bits = static_cast<Bitmap *> (objects[i].get());
-            vector<tuple<int, int, char>> map = bits->getMap();
-            for (int j = 0; j < map.size(); j++) {
-                get<1>(map[j]) -= offset; 
-            }
+            objects[i]->setYPos(objects[i]->getYPos() - 1);
         }
     }
     makeNewPlatform(getLastPlatformHeight(), true);
@@ -87,5 +82,5 @@ void IceCreamDrop::updateView() {
 }
 
 int IceCreamDrop::getRandomNumber(int lower, int higher) {
-    return (rand() % higher) + lower;
+    return (rand() % (higher - lower)) + lower;
 }

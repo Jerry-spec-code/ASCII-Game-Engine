@@ -9,7 +9,7 @@ class Border;
 class IceCreamDrop : public Game {
     shared_ptr<GameObject> iceCream;
     shared_ptr<Border> border;
-    const int firstPlatformHeight = 2;
+    const int firstPlatformHeight = 4;
     const int offset = 2;
     const int lowerBoundHole;
     const int upperBoundHole;
