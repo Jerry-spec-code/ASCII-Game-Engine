@@ -97,6 +97,9 @@ void IceCreamDrop::updateIceCreamPosition(Action action) {
             iceCream->setXPos(border->getBorderLength() - 2);
         }
     }
+    if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1)) {
+        iceCream->setYPos(iceCream->getYPos() + 2);
+    }
 }
 
 void IceCreamDrop::updateView() {
