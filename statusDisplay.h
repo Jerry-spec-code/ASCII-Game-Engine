@@ -15,6 +15,7 @@ public:
     StatusDisplay(std::initializer_list<string> init);
     ~StatusDisplay();
     void setMessages(vector<string> messages);
+    void addMessage(string message);
     vector<string> getMessages();
 private:
     void doDisplay() override;

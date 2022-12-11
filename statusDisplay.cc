@@ -25,6 +25,10 @@ void StatusDisplay::setMessages(vector<string> messages) {
     this->messages = messages;
 }
 
+void StatusDisplay::addMessage(string message) {
+    messages.push_back(message);
+}
+
 vector<string> StatusDisplay::getMessages() {
     return messages;
 }
