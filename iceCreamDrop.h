@@ -26,6 +26,7 @@ public:
     void position() override;
     void go() override;
 private:
+    void display();
     void positionPlatforms();
     void positionIceCream();
     void updateView();

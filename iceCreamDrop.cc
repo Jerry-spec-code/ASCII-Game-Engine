@@ -25,23 +25,26 @@ void IceCreamDrop::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
-        shared_ptr<Display> display_border = make_shared<BorderDisplay>();
-        shared_ptr<Display> display_status = make_shared<StatusDisplay>(3); 
-        shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
-        display_objects->display();
-        display_border->display();
-        display_status->display();
-        refresh();	
+        display();
         for (int i = 0; i < 10; i++) {
             noecho();
             Action action = input->getAction();	
             updateIceCreamPosition(action);	
-            display_objects->display();
-            refresh();	
+            display();	
         }
         updateView();
     }
     endwin();			
+}
+
+void IceCreamDrop::display() {
+    shared_ptr<Display> display_border = make_shared<BorderDisplay>();
+    shared_ptr<Display> display_status = make_shared<StatusDisplay>(3); 
+    shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
+    display_objects->display();
+    display_border->display();
+    display_status->display();
+    refresh();	
 }
 
 void IceCreamDrop::position() {
