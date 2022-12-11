@@ -21,17 +21,19 @@ upperBoundHole{3 * (border->getBorderLength() / 4)} {
 IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::go() {			
-    shared_ptr<Display> display_border = make_shared<BorderDisplay>();
-    shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
-    shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
     initscr();
-    for (int i = 0; i < 7; i++) {
+    int i = 0;
+    while (status != 0 || i < 10) {
+        shared_ptr<Display> display_border = make_shared<BorderDisplay>();
+        shared_ptr<Display> display_status = make_shared<StatusDisplay>(3);
+        shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
         display_objects->display();
         display_border->display();
         display_status->display();
         refresh();			
         getch();	
         updateView();
+        ++i;
     }
     endwin();			
 }
@@ -53,7 +55,6 @@ void IceCreamDrop::positionPlatforms() {
 }
 
 int IceCreamDrop::getLastPlatformHeight() {
-    shared_ptr<Border> border = make_shared<Border>();
     int i = firstPlatformHeight;
     while (i < border->getBorderHeight()) {
         i += offset;
@@ -61,10 +62,16 @@ int IceCreamDrop::getLastPlatformHeight() {
     return i - offset; 
 }
 
-void IceCreamDrop::makeNewPlatform(int y, bool fly) {
+void IceCreamDrop::makeNewPlatform(int y, bool addFly) {
     int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
     addGameObject(make_shared<Rectangle>(holeLocation - 1, 1, 1, y, 1, '-'));
     addGameObject(make_shared<Rectangle>(border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y, 1, '-'));
+    if (addFly) {
+        int randNum = getRandomNumber(1, 5);
+        if (randNum == 1) {
+            // addGameObject(make_shared<Rectangle>(3, 1, holeLocation - 1, y - 1, 1, 'X'));   
+        }
+    }
 }
 
 void IceCreamDrop::updateView() {
@@ -74,7 +81,13 @@ void IceCreamDrop::updateView() {
             objects[i]->setYPos(objects[i]->getYPos() - 1);
         }
     }
-    makeNewPlatform(getLastPlatformHeight(), true);
+    if (!makeNew) {
+        makeNew = true;
+    }
+    else {
+        makeNewPlatform(getLastPlatformHeight(), true);
+        makeNew = false;
+    }
     if (iceCream->getYPos() < 1) {
         status = 0;
     }

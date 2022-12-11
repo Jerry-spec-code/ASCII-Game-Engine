@@ -13,6 +13,7 @@ class IceCreamDrop : public Game {
     const int offset = 2;
     const int lowerBoundHole;
     const int upperBoundHole;
+    bool makeNew = false;
     int status = 1; //1 is still playing, 0 means lost .
 public:
     IceCreamDrop();
@@ -24,6 +25,6 @@ private:
     void positionIceCream();
     void updateView();
     int getLastPlatformHeight();
-    void makeNewPlatform(int height, bool fly = false);
+    void makeNewPlatform(int height, bool addFly = false);
     int getRandomNumber(int lower, int higher);
 };
