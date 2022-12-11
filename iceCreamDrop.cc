@@ -121,9 +121,6 @@ void IceCreamDrop::updateView() {
     else {
         makeNew = true;
     }
-    if (iceCream->getYPos() < 1) {
-        status = 0;
-    }
 }
 
 int IceCreamDrop::getRandomNumber(int lower, int higher) {
