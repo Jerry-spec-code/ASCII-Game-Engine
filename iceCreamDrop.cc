@@ -27,6 +27,7 @@ void IceCreamDrop::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
+        iceCreamDisplay->updateObjects(getObjects());
         iceCreamDisplay->render();
         clock_t t = clock();
         while (clock() - t < updateInterval) {
@@ -40,6 +41,7 @@ void IceCreamDrop::go() {
             if (atLastPlatform()) {
                 updateView();
             }
+            iceCreamDisplay->updateObjects(getObjects());
             iceCreamDisplay->render();	
         }
         updateView();
