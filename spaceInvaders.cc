@@ -43,6 +43,7 @@ void SpaceInvaders::go() {
     //         displayHelper();	
     //     }
     //     updateView();
+        break;
     }
     display();
     sleep_for(5s);
