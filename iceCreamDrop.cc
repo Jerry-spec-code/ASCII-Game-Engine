@@ -16,6 +16,9 @@
 #include "statusDisplay.h"
 #include "iceCreamDisplay.h"
 
+#include <iostream>
+using namespace std;
+
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
 upperBoundHole{3 * (border->getBorderLength() / 4)}, iceCreamDisplay{make_shared<IceCreamDisplay>()} {
     iceCream = make_shared<IceCream>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
@@ -37,9 +40,6 @@ void IceCreamDrop::go() {
                 IceCream cream = static_cast<IceCream &>(*iceCream);
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
                 cream.updateIceCreamPosition(action, border, fall);
-            }
-            else {
-                cout << "Didn't make it" << endl;
             }
             if (atLastPlatform()) {
                 updateView();
