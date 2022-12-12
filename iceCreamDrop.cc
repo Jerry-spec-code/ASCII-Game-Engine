@@ -38,8 +38,8 @@ void IceCreamDrop::go() {
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
-                IceCream cream = static_cast<IceCream &>(*iceCream);
-                cream.updateIceCreamPosition(action, border, fall);
+                IceCream *cream = static_pointer_cast<IceCream *>(iceCream.get());
+                cream->updateIceCreamPosition(action, border, fall);
             }
             if (atLastPlatform()) {
                 updateView();
