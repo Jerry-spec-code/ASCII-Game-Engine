@@ -37,8 +37,8 @@ void IceCreamDrop::go() {
             noecho();
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
-                IceCream cream = static_cast<IceCream &>(*iceCream);
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
+                IceCream cream = static_cast<IceCream &>(*iceCream);
                 cream.updateIceCreamPosition(action, border, fall);
             }
             if (atLastPlatform()) {
@@ -106,24 +106,24 @@ void IceCreamDrop::makeFly(int x, int y) {
     }
 }
 
-// void IceCreamDrop::updateIceCreamPosition(Action action) {
-//     if(action == Action::RIGHT) {
-//         iceCream->setXPos(iceCream->getXPos() + 1);
-//         if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-//             iceCream->setXPos(1);
-//         }
-//     }
-//     else if (action == Action::LEFT) {
-//         iceCream->setXPos(iceCream->getXPos() - 1);
-//         if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-//             iceCream->setXPos(border->getBorderLength() - 2);
-//         }
-//     }
-//     if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
-//         iceCream->setYPos(iceCream->getYPos() + 2);
-//         // iceCreamDisplay->updateStatus();
-//     }
-// }
+void IceCreamDrop::updateIceCreamPosition(Action action, shared_ptr<Border> border, bool fall) {
+    if(action == Action::RIGHT) {
+        iceCream->setXPos(iceCream->getXPos() + 1);
+        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
+            iceCream->setXPos(1);
+        }
+    }
+    else if (action == Action::LEFT) {
+        iceCream->setXPos(iceCream->getXPos() - 1);
+        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
+            iceCream->setXPos(border->getBorderLength() - 2);
+        }
+    }
+    if (fall) {
+        iceCream->setYPos(iceCream->getYPos() + 2);
+        // iceCreamDisplay->updateStatus();
+    }
+}
 
 void IceCreamDrop::updateView() {
     vector<shared_ptr<GameObject>> objects = getObjects();
