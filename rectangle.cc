@@ -1,5 +1,7 @@
 #include "rectangle.h"
 
+Rectangle::Rectangle() {}
+
 Rectangle::Rectangle(char c, int length, int width, int topLeftX, int topLeftY, int height): length{length}, width{width}, 
 c{c}, GameObject{topLeftX, topLeftY, height} {}
 Rectangle::~Rectangle() {}

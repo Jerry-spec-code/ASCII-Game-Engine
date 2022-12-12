@@ -15,6 +15,8 @@
 #include "borderDisplay.h"
 #include "statusDisplay.h"
 #include "iceCreamDisplay.h"
+#include "fly.h"
+#include "collision.h"
 
 #include <iostream>
 using namespace std;
@@ -56,17 +58,6 @@ bool IceCreamDrop::atLastPlatform() {
     return iceCream->getYPos() + 1 == getLastPlatformHeight();
 }
 
-// void IceCreamDrop::display() {
-//     shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
-//     shared_ptr<StatusDisplay> display_status = make_shared<StatusDisplay>(); 
-//     shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
-//     display_objects->setObjects(getObjects());
-//     display_border->display();
-//     display_objects->display();
-//     display_status->display();
-//     refresh();	
-// }
-
 void IceCreamDrop::position() {
     srand (time(NULL));
     positionPlatforms();
@@ -102,7 +93,8 @@ void IceCreamDrop::makeNewPlatform(int y) {
 void IceCreamDrop::makeFly(int x, int y) {
     int randNum = getRandomNumber(1, flyFrequency);
     if (randNum == 1) {
-        addGameObject(make_shared<Rectangle>('X', 3, 1, x, y));
+        shared_ptr<GameObject> fly = make_shared<Fly>('X', 3, 1, x, y);
+        addGameObject(fly);
     }
 }
 
@@ -128,11 +120,24 @@ void IceCreamDrop::updateView() {
     else {
         makeNew = true;
     }
-    if (iceCream->getYPos() < 1) {
+    if (iceCream->getYPos() < 1 || hitFly()) {
         status = 0;
     }
 }
 
 int IceCreamDrop::getRandomNumber(int lower, int higher) {
     return (rand() % (higher - lower)) + lower;
+}
+
+bool IceCreamDrop::hitFly() {
+    shared_ptr<Collision> collision = make_shared<Collision>();
+    vector<shared_ptr<GameObject>> objects = getObjects();
+    for (int i = 0; i < objects.size(); i++) {
+        if (dynamic_cast<Fly *>(objects[i].get())) {
+            if (collision->isColliding(iceCream, objects[i])) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

@@ -2,6 +2,7 @@
 #define ICECREAMDROP_H
 #include "game.h"
 #include "action.h"
+#include <vector>
 
 #include <iostream>
 using namespace std;
@@ -38,6 +39,7 @@ private:
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);
     bool atLastPlatform();
+    bool hitFly();
 };
 
 #endif
