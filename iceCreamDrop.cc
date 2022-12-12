@@ -32,9 +32,10 @@ void IceCreamDrop::go() {
         while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
-            // if (dynamic_cast<IceCream *>(iceCream.get())) {
+            if (dynamic_cast<IceCream *>(iceCream.get())) {
+                IceCream cream = static_cast<IceCream &>(*iceCream);
                 updateIceCreamPosition(action);	   
-            // }
+            }
             if (atLastPlatform()) {
                 updateView();
             }
