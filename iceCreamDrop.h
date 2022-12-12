@@ -30,12 +30,10 @@ public:
     void go() override;
     shared_ptr<Border> getBorder();
 private:
-    void display();
     void positionPlatforms();
     void positionIceCream();
     void updateView();
     int getLastPlatformHeight();
-    void updateIceCreamPosition(Action action);
     void makeNewPlatform(int height);
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);

@@ -38,6 +38,9 @@ void IceCreamDrop::go() {
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
                 cream.updateIceCreamPosition(action, border, fall);
             }
+            else {
+                cout << "Didn't make it" << endl;
+            }
             if (atLastPlatform()) {
                 updateView();
             }
@@ -103,24 +106,24 @@ void IceCreamDrop::makeFly(int x, int y) {
     }
 }
 
-void IceCreamDrop::updateIceCreamPosition(Action action) {
-    if(action == Action::RIGHT) {
-        iceCream->setXPos(iceCream->getXPos() + 1);
-        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-            iceCream->setXPos(1);
-        }
-    }
-    else if (action == Action::LEFT) {
-        iceCream->setXPos(iceCream->getXPos() - 1);
-        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-            iceCream->setXPos(border->getBorderLength() - 2);
-        }
-    }
-    if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
-        iceCream->setYPos(iceCream->getYPos() + 2);
-        // iceCreamDisplay->updateStatus();
-    }
-}
+// void IceCreamDrop::updateIceCreamPosition(Action action) {
+//     if(action == Action::RIGHT) {
+//         iceCream->setXPos(iceCream->getXPos() + 1);
+//         if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
+//             iceCream->setXPos(1);
+//         }
+//     }
+//     else if (action == Action::LEFT) {
+//         iceCream->setXPos(iceCream->getXPos() - 1);
+//         if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
+//             iceCream->setXPos(border->getBorderLength() - 2);
+//         }
+//     }
+//     if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
+//         iceCream->setYPos(iceCream->getYPos() + 2);
+//         // iceCreamDisplay->updateStatus();
+//     }
+// }
 
 void IceCreamDrop::updateView() {
     vector<shared_ptr<GameObject>> objects = getObjects();
