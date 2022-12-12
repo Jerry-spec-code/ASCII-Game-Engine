@@ -3,6 +3,7 @@
 #include "borderDisplay.h"
 #include "statusDisplay.h"
 #include <memory>
+#include <string>
 #include <ncurses.h>
 
 IceCreamDisplay::IceCreamDisplay(): display_border{make_shared<BorderDisplay>()}, 

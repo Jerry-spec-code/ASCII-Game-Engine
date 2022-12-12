@@ -1,8 +1,19 @@
 #include "spaceInvaders.h"
 #include <ncurses.h>
 #include "keyboard.h"
+#include "spaceInvadersDisplay.h"
 
-SpaceInvaders::SpaceInvaders() {}
+#include <string>
+#include <chrono>
+#include <thread>
+
+#include <iostream>
+using namespace std;
+using namespace std::this_thread;     
+using namespace std::chrono_literals; 
+using std::chrono::system_clock;
+
+SpaceInvaders::SpaceInvaders(): spaceInvadersDisplay{make_shared<SpaceInvadersDisplay>()} {}
 
 SpaceInvaders::~SpaceInvaders() {}
 
@@ -11,10 +22,10 @@ void SpaceInvaders::position() {
 }
 
 void SpaceInvaders::go() {
-    // initscr();
-    // shared_ptr<Controller> input = make_shared<Keyboard>();
-    // while (status != 0) {
-    //     iceCreamDisplay->inProgress();
+    initscr();
+    shared_ptr<Controller> input = make_shared<Keyboard>();
+    while (status != 0) {
+        spaceInvadersDisplay->inProgress();
     //     displayHelper();
     //     clock_t t = clock();
     //     while (clock() - t < updateInterval) {
@@ -32,8 +43,13 @@ void SpaceInvaders::go() {
     //         displayHelper();	
     //     }
     //     updateView();
-    // }
-    // displayHelper();
-    // sleep_for(5s);
-    // endwin();
+    }
+    display();
+    sleep_for(5s);
+    endwin();
+}
+
+void SpaceInvaders::display() {
+    spaceInvadersDisplay->updateObjects(getObjects());
+    spaceInvadersDisplay->render();
 }
