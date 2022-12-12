@@ -7,6 +7,7 @@ class GameDisplay;
 class GameObject;
 
 #include <memory>
+#include <vector>
 using namespace std;
 
 class SpaceInvadersDisplay {
