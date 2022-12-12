@@ -42,6 +42,10 @@ void IceCreamDrop::go() {
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
                 IceCream *cream = static_cast<IceCream *>(iceCream.get());
                 cream->updateIceCreamPosition(action, border, fall);
+                if (hitFly()) {
+                    status = 0;
+                    break;
+                }
             }
             if (atLastPlatform()) {
                 updateView();
@@ -120,7 +124,7 @@ void IceCreamDrop::updateView() {
     else {
         makeNew = true;
     }
-    if (iceCream->getYPos() < 1 || hitFly()) {
+    if (iceCream->getYPos() < 1) {
         status = 0;
     }
 }

@@ -5,6 +5,7 @@
 #include "bitmap.h"
 
 #include <memory>
+#include <iostream>
 using namespace std;
 
 Collision::Collision() {}
