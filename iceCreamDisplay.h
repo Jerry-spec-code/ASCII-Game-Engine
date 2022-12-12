@@ -6,6 +6,11 @@
 #include <memory>
 
 class GameObject;
+class BorderDisplay;
+class StatusDisplay;
+class GameDisplay;
+
+using namespace std;
 
 class IceCreamDisplay {
     shared_ptr<BorderDisplay> display_border;
