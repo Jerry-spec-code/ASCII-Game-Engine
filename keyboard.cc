@@ -18,7 +18,7 @@ Action Keyboard::action(){
   int n;
   while ( (n = getch()) == ERR ) {
     float time = getInputTime();
-    if (time > 0) {        
+    if (time > 0) {  
         sleep(time);
         break;
     }

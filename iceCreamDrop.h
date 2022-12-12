@@ -23,6 +23,7 @@ class IceCreamDrop : public Game {
     const int appleFrequency = 5; //Number of platforms passed per apple generated
     bool makeNew = false;
     int status = 1; //1 is still playing, 0 means lost.
+    int updateInterval = 75000;
     int numOfPlatformsPassed = 0;
 public:
     IceCreamDrop();
