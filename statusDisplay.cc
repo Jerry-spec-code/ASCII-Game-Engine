@@ -30,6 +30,7 @@ vector<string> StatusDisplay::getMessages() {
 }
 
 void StatusDisplay::doDisplay() {
+    mvprintw(0, 0, "Hello");
     shared_ptr<Border> border = make_shared<Border>();
     for (int i = 0; i < messages.size(); i++) {
         mvprintw(border->getBorderHeight() + i, 0, messages[i].c_str());
