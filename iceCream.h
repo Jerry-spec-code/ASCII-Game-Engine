@@ -5,6 +5,7 @@
 
 using namespace std;
 class Game;
+class Border;
 
 class IceCream : public Character {
 public:
