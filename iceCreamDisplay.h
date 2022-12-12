@@ -7,7 +7,7 @@
 
 class GameObject;
 
-class IceCreamDisplay : public Display {
+class IceCreamDisplay {
     shared_ptr<BorderDisplay> display_border;
     shared_ptr<StatusDisplay> display_status;
     shared_ptr<GameDisplay> display_objects;
