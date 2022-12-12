@@ -13,7 +13,7 @@ class IceCreamDisplay;
 class IceCreamDrop : public Game {
     shared_ptr<GameObject> iceCream;
     shared_ptr<Border> border;
-    shared_ptr<IceCreamDisplay> display;
+    shared_ptr<IceCreamDisplay> iceCreamDisplay;
     const int firstPlatformHeight = 4;
     const int offset = 2;
     const int lowerBoundHole;
@@ -28,6 +28,7 @@ public:
     ~IceCreamDrop();
     void position() override;
     void go() override;
+    shared_ptr<Border> getBorder();
 private:
     void display();
     void positionPlatforms();
