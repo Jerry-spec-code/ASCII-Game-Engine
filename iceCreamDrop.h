@@ -40,6 +40,7 @@ private:
     void makeFly(int x, int y);
     bool atLastPlatform();
     bool hitFly();
+    void moveIceCream(Action action);
 };
 
 #endif

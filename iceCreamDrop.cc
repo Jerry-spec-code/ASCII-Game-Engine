@@ -39,11 +39,8 @@ void IceCreamDrop::go() {
             noecho();
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
-                bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
-                IceCream *cream = static_cast<IceCream *>(iceCream.get());
-                cream->updateIceCreamPosition(action, border, fall);
-                if (hitFly()) {
-                    status = 0;
+                moveIceCream(action);
+                if (status == 0) {
                     break;
                 }
             }
@@ -144,4 +141,22 @@ bool IceCreamDrop::hitFly() {
         }
     }
     return false;
+}
+
+void IceCreamDrop::moveIceCream(Action action) {
+    bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
+    IceCream *cream = static_cast<IceCream *>(iceCream.get());
+    cream->updateIceCreamPosition(action, border, fall);
+    if (hitFly()) {
+        for (int i = 0; i < offset; i++) {
+            if (action == Action::RIGHT) {
+                cream->updateIceCreamPosition(Action::LEFT, border, fall);
+            }
+            else if (action == Action::LEFT) {
+                cream->updateIceCreamPosition(Action::RIGHT, border, fall);
+            }
+            updateView();
+        }
+        status = 0;
+    }
 }
