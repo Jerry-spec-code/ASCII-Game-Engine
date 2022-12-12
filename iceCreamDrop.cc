@@ -27,19 +27,20 @@ void IceCreamDrop::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
-        display();
+        iceCreamDisplay->render();
         clock_t t = clock();
         while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
                 IceCream cream = static_cast<IceCream &>(*iceCream);
-                updateIceCreamPosition(action);	   
+                bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
+                cream.updateIceCreamPosition(action, border, fall);
             }
             if (atLastPlatform()) {
                 updateView();
             }
-            display();	
+            iceCreamDisplay->render();	
         }
         updateView();
     }
@@ -50,16 +51,16 @@ bool IceCreamDrop::atLastPlatform() {
     return iceCream->getYPos() + 1 == getLastPlatformHeight();
 }
 
-void IceCreamDrop::display() {
-    shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
-    shared_ptr<StatusDisplay> display_status = make_shared<StatusDisplay>(); 
-    shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
-    display_objects->setObjects(getObjects());
-    display_border->display();
-    display_objects->display();
-    display_status->display();
-    refresh();	
-}
+// void IceCreamDrop::display() {
+//     shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
+//     shared_ptr<StatusDisplay> display_status = make_shared<StatusDisplay>(); 
+//     shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
+//     display_objects->setObjects(getObjects());
+//     display_border->display();
+//     display_objects->display();
+//     display_status->display();
+//     refresh();	
+// }
 
 void IceCreamDrop::position() {
     srand (time(NULL));
@@ -73,7 +74,7 @@ void IceCreamDrop::positionIceCream() {
 
 void IceCreamDrop::positionPlatforms() {
     for (int i = firstPlatformHeight; i < border->getBorderHeight(); i += offset) {
-        makeNewPlatform(i, true);
+        makeNewPlatform(i);
     }
 }
 
@@ -85,16 +86,12 @@ int IceCreamDrop::getLastPlatformHeight() {
     return i - offset; 
 }
 
-void IceCreamDrop::makeNewPlatform(int y, bool addFly) {
+void IceCreamDrop::makeNewPlatform(int y) {
     int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
+    int randNum = 2 * getRandomNumber(0, 1) - 1;
     addGameObject(make_shared<Rectangle>('-', holeLocation - 1, 1, 1, y));
     addGameObject(make_shared<Rectangle>('-', border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y));
-    if (addFly) {
-        int randNum = getRandomNumber(0, 1);
-        randNum *= 2;
-        randNum--;
-        makeFly(holeLocation + randNum, y - 1);
-    }
+    makeFly(holeLocation + randNum, y - 1);
 }
 
 void IceCreamDrop::makeFly(int x, int y) {
@@ -139,7 +136,7 @@ void IceCreamDrop::updateView() {
         }
     }
     if (makeNew) {
-        makeNewPlatform(getLastPlatformHeight(), true);
+        makeNewPlatform(getLastPlatformHeight());
         makeNew = false;
     }
     else {

@@ -36,7 +36,7 @@ private:
     void updateView();
     int getLastPlatformHeight();
     void updateIceCreamPosition(Action action);
-    void makeNewPlatform(int height, bool addFly = false);
+    void makeNewPlatform(int height);
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);
     bool atLastPlatform();
