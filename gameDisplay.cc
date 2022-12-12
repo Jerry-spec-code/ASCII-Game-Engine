@@ -55,7 +55,9 @@ void GameDisplay::displayRectangle(Rectangle &r) {
     shared_ptr<Border> border = make_shared<Border>();
     for (int i = 0; i < r.getWidth(); i++) {
         for (int j = 0; j < r.getLength(); j++) {
-            mvaddch(i + r.getYPos(), j + r.getXPos(), r.getCharacter()); 
+            if(!border->onBorder(i + r.getYPos(), j + r.getXPos())) {
+                mvaddch(i + r.getYPos(), j + r.getXPos(), r.getCharacter()); 
+            }
         }
     }
 }
