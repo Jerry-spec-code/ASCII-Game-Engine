@@ -20,7 +20,7 @@ class IceCreamDrop : public Game {
     const int appleFrequency = 5; //Number of platforms passed per apple generated
     bool makeNew = false;
     int status = 1; //1 is still playing, 0 means lost .
-    const int updateInterval = 5000;
+    const int updateInterval = 10000;
 public:
     IceCreamDrop();
     ~IceCreamDrop();
@@ -36,6 +36,7 @@ private:
     void makeNewPlatform(int height, bool addFly = false);
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);
+    bool atLastPlatform();
 };
 
 #endif

@@ -31,11 +31,18 @@ void IceCreamDrop::go() {
             noecho();
             Action action = input->getAction();	
             updateIceCreamPosition(action);	
+            if (atLastPlatform()) {
+                updateView();
+            }
             display();	
         }
         updateView();
     }
     endwin();			
+}
+
+bool IceCreamDrop::atLastPlatform() {
+    return iceCream->getYPos() + 1 == getLastPlatformHeight();
 }
 
 void IceCreamDrop::display() {
@@ -104,7 +111,7 @@ void IceCreamDrop::updateIceCreamPosition(Action action) {
             iceCream->setXPos(border->getBorderLength() - 2);
         }
     }
-    if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1)) {
+    if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
         iceCream->setYPos(iceCream->getYPos() + 2);
     }
 }
