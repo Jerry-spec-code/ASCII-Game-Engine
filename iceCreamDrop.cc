@@ -56,7 +56,8 @@ void IceCreamDrop::go() {
         }
         updateView();
     }
-    sleep_for(1s);
+    displayHelper();
+    sleep_for(3s);
     endwin();			
 }
 
