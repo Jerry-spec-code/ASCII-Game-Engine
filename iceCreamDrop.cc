@@ -13,10 +13,11 @@
 #include <stdlib.h>    
 #include <time.h>
 #include "keyboard.h"
+#include "iceCream.h"
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
 upperBoundHole{3 * (border->getBorderLength() / 4)} {
-    iceCream = make_shared<Character>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
+    iceCream = make_shared<IceCream>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
 }
 
 IceCreamDrop::~IceCreamDrop() {}
