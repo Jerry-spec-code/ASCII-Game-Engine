@@ -38,7 +38,6 @@ private:
     int getRandomNumber(int lower, int higher);
     void makeFly(int x, int y);
     bool atLastPlatform();
-    void updateIceCreamPosition(Action action, shared_ptr<Border> border, bool fall);
 };
 
 #endif

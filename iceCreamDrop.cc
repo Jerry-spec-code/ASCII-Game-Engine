@@ -38,7 +38,7 @@ void IceCreamDrop::go() {
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
                 bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
-                IceCream *cream = static_pointer_cast<IceCream *>(iceCream.get());
+                IceCream *cream = static_cast<IceCream *>(iceCream.get());
                 cream->updateIceCreamPosition(action, border, fall);
             }
             if (atLastPlatform()) {
@@ -103,25 +103,6 @@ void IceCreamDrop::makeFly(int x, int y) {
     int randNum = getRandomNumber(1, flyFrequency);
     if (randNum == 1) {
         addGameObject(make_shared<Rectangle>('X', 3, 1, x, y));
-    }
-}
-
-void IceCreamDrop::updateIceCreamPosition(Action action, shared_ptr<Border> border, bool fall) {
-    if(action == Action::RIGHT) {
-        iceCream->setXPos(iceCream->getXPos() + 1);
-        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-            iceCream->setXPos(1);
-        }
-    }
-    else if (action == Action::LEFT) {
-        iceCream->setXPos(iceCream->getXPos() - 1);
-        if(border->onBorder(iceCream->getYPos(), iceCream->getXPos())) {
-            iceCream->setXPos(border->getBorderLength() - 2);
-        }
-    }
-    if (fall) {
-        iceCream->setYPos(iceCream->getYPos() + 2);
-        // iceCreamDisplay->updateStatus();
     }
 }
 
