@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 #include <ncurses.h>
+#include <vector>
 
 SpaceInvadersDisplay::SpaceInvadersDisplay(): display_border{make_shared<BorderDisplay>()}, 
 display_status{make_shared<StatusDisplay>()}, display_objects{make_shared<GameDisplay>()} {}
