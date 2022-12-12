@@ -19,6 +19,7 @@ public:
     vector<string> getMessages();
 private:
     void doDisplay() override;
+    void clearStatusArea();
 };
 
 #endif
