@@ -155,7 +155,7 @@ void IceCreamDrop::moveIceCream(Action action) {
             else if (action == Action::LEFT) {
                 cream->updateIceCreamPosition(Action::RIGHT, border, fall);
             }
-            updateView();
+            iceCreamDisplay->render();
         }
         status = 0;
     }
