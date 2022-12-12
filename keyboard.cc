@@ -1,6 +1,12 @@
 #include "keyboard.h"
 #include <string>
 #include <unistd.h>
+#include <chrono>
+#include <thread>
+#include <ncurses.h>
+
+#include <iostream>
+using namespace std;
 
 Keyboard::Keyboard() {
   setlocale(LC_ALL, "");
@@ -16,13 +22,19 @@ Keyboard::Keyboard() {
 
 Action Keyboard::action(){
   int n;
-  while ( (n = getch()) == ERR ) {
-    float time = getInputTime();
-    if (time > 0) {  
-        sleep(time);
-        break;
-    }
-  }
+  n = getch();
+  // while ( (n = getch()) == ERR ) {
+  //   float time = getInputTime();
+  //   if (time > 0) {  
+  //       // sleep(time);
+  //       // wtimeout(stdscr, 1000);
+  //       // cout << "Hi" << endl;
+  //       break;
+  //   }
+  //   else {
+  //     cout << time << endl;
+  //   }
+  // }
 
   if ( mapping.find(n) != mapping.end() ){
     return mapping[n];

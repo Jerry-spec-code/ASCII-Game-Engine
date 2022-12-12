@@ -28,6 +28,13 @@ void SpaceInvaders::position() {
 void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
+    wtimeout(stdscr, 5000);
+    Action action = input->getAction();
+    cout << "Hello" << endl;
+    // while (action == Action::INVALID) {
+    //     action = input->getAction();
+    // }	
+    status = 0;
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
         display();
@@ -47,7 +54,6 @@ void SpaceInvaders::go() {
         break;
     }
     display();
-    sleep(5);
     endwin();
 }
 
