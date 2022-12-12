@@ -34,7 +34,10 @@ void GameDisplay::doDisplay() {
 }   
 
 void GameDisplay::displayCharacter(Character &c) {
-    mvaddch(c.getYPos(), c.getXPos(), c.getCharacter());
+    shared_ptr<Border> border = make_shared<Border>();
+    if(!border->onBorder(c.getYPos(), c.getXPos())) {
+        mvaddch(c.getYPos(), c.getXPos(), c.getCharacter());
+    }
 }
 
 void GameDisplay::clearScreen() {
@@ -49,16 +52,22 @@ void GameDisplay::clearScreen() {
 }
 
 void GameDisplay::displayRectangle(Rectangle &r) {
+    shared_ptr<Border> border = make_shared<Border>();
     for (int i = 0; i < r.getWidth(); i++) {
         for (int j = 0; j < r.getLength(); j++) {
-            mvaddch(i + r.getYPos(), j + r.getXPos(), r.getCharacter());
+            if(!border->onBorder(i, j)) {
+                mvaddch(i + r.getYPos(), j + r.getXPos(), r.getCharacter()); 
+            }
         }
     }
 }
 
 void GameDisplay::displayBitmap(Bitmap &b) {
+    shared_ptr<Border> border = make_shared<Border>();
     vector<tuple<int, int, char>> map = b.getMap();
     for (int i = 0; i < map.size(); i++) {
-        mvaddch(get<1>(map[i]), get<0>(map[i]), get<2>(map[i]));
+        if(!border->onBorder(get<1>(map[i]), get<0>(map[i]))) {
+            mvaddch(get<1>(map[i]), get<0>(map[i]), get<2>(map[i]));
+        }
     }
 }
