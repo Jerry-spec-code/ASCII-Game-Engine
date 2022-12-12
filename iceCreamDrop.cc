@@ -18,8 +18,14 @@
 #include "fly.h"
 #include "collision.h"
 
+#include <chrono>
+#include <thread>
+
 #include <iostream>
 using namespace std;
+using namespace std::this_thread;     
+using namespace std::chrono_literals; 
+using std::chrono::system_clock;
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
 upperBoundHole{3 * (border->getBorderLength() / 4)}, iceCreamDisplay{make_shared<IceCreamDisplay>()} {
@@ -32,8 +38,7 @@ void IceCreamDrop::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
-        iceCreamDisplay->updateObjects(getObjects());
-        iceCreamDisplay->render();
+        displayHelper();
         clock_t t = clock();
         while (clock() - t < updateInterval) {
             noecho();
@@ -47,8 +52,7 @@ void IceCreamDrop::go() {
             if (atLastPlatform()) {
                 updateView();
             }
-            iceCreamDisplay->updateObjects(getObjects());
-            iceCreamDisplay->render();	
+            displayHelper();	
         }
         updateView();
     }
@@ -148,15 +152,21 @@ void IceCreamDrop::moveIceCream(Action action) {
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
     cream->updateIceCreamPosition(action, border, fall);
     if (hitFly()) {
-        for (int i = 0; i < offset; i++) {
+        for (int i = 0; i < iceCream->getXPos(); i++) {
             if (action == Action::RIGHT) {
                 cream->updateIceCreamPosition(Action::LEFT, border, fall);
             }
             else if (action == Action::LEFT) {
                 cream->updateIceCreamPosition(Action::RIGHT, border, fall);
             }
-            iceCreamDisplay->render();
+            displayHelper();
+            sleep_for(0.05s);
         }
         status = 0;
     }
+}
+
+void IceCreamDrop::displayHelper() {
+    iceCreamDisplay->updateObjects(getObjects());
+    iceCreamDisplay->render();
 }

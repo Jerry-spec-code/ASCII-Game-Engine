@@ -41,6 +41,7 @@ private:
     bool atLastPlatform();
     bool hitFly();
     void moveIceCream(Action action);
+    void displayHelper();
 };
 
 #endif
