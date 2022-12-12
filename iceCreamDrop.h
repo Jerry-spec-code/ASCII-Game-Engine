@@ -42,6 +42,7 @@ private:
     bool hitFly();
     void moveIceCream(Action action);
     void displayHelper();
+    void vanishUpdate();
 };
 
 #endif

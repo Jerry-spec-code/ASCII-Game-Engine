@@ -56,6 +56,7 @@ void IceCreamDrop::go() {
         }
         updateView();
     }
+    sleep_for(1s);
     endwin();			
 }
 
@@ -126,6 +127,7 @@ void IceCreamDrop::updateView() {
         makeNew = true;
     }
     if (iceCream->getYPos() < 1) {
+        vanishUpdate();
         status = 0;
     }
 }
@@ -152,7 +154,7 @@ void IceCreamDrop::moveIceCream(Action action) {
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
     cream->updateIceCreamPosition(action, border, fall);
     if (hitFly()) {
-        for (int i = 0; i < iceCream->getXPos(); i++) {
+        for (int i = 0; i < 3 * offset; i++) {
             if (action == Action::RIGHT) {
                 cream->updateIceCreamPosition(Action::LEFT, border, fall);
             }
@@ -169,4 +171,12 @@ void IceCreamDrop::moveIceCream(Action action) {
 void IceCreamDrop::displayHelper() {
     iceCreamDisplay->updateObjects(getObjects());
     iceCreamDisplay->render();
+}
+
+void IceCreamDrop::vanishUpdate() {
+    vector<string> messages = iceCreamDisplay->getStatus();
+    messages.push_back("You disintegrated!");
+    messages.push_back("Tough loss.");
+    messages.push_back("You passed 2 platforms");
+    iceCreamDisplay->updateStatus(messages);
 }
