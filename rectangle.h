@@ -11,7 +11,7 @@ class Rectangle: public GameObject {
     int width;
     char c;
 public:
-    Rectangle(int length, int width, int x, int y, int height, char c);
+    Rectangle(char c, int length, int width, int x, int y, int height = 1);
     ~Rectangle();
     int getLength();
     void setLength(int length);

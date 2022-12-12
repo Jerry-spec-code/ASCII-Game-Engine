@@ -22,8 +22,8 @@ int main(int argc, char* argv[]) {
     }
     if (argc == 1 || string(argv[1]) == "-drop") {
         shared_ptr<Game> g = make_shared<Game>();
-        shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5, 1);
-        shared_ptr<GameObject> fly = make_shared<Character>('X', 5, 15, 1);
+        shared_ptr<GameObject> iceCream = make_shared<Character>('O', 15, 5);
+        shared_ptr<GameObject> fly = make_shared<Character>('X', 5, 15);
         g->addGameObject(iceCream);
         g->addGameObject(fly);
         g->go();

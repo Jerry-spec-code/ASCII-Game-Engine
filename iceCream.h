@@ -6,7 +6,7 @@ using namespace std;
 
 class IceCream : public Character {
 public:
-    IceCream();
+    IceCream(char c, int x, int y, int height = 1);
     ~IceCream();
 
 };
