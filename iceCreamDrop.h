@@ -8,10 +8,12 @@ using namespace std;
 
 class GameObject;
 class Border;
+class IceCreamDisplay;
 
 class IceCreamDrop : public Game {
     shared_ptr<GameObject> iceCream;
     shared_ptr<Border> border;
+    shared_ptr<IceCreamDisplay> display;
     const int firstPlatformHeight = 4;
     const int offset = 2;
     const int lowerBoundHole;

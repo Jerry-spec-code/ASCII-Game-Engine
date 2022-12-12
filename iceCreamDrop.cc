@@ -14,9 +14,10 @@
 #include "gameDisplay.h"
 #include "borderDisplay.h"
 #include "statusDisplay.h"
+#include "iceCreamDisplay.h"
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
-upperBoundHole{3 * (border->getBorderLength() / 4)} {
+upperBoundHole{3 * (border->getBorderLength() / 4)}, iceCreamDisplay{make_shared<IceCreamDisplay>()} {
     iceCream = make_shared<IceCream>('O', (border->getBorderLength() - 2) / 2, firstPlatformHeight - 1, 1);
 }
 
@@ -31,7 +32,9 @@ void IceCreamDrop::go() {
         while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
-            updateIceCreamPosition(action);	
+            if (dynamic_cast<IceCream *>(iceCream.get())) {
+                updateIceCreamPosition(action);	   
+            }
             if (atLastPlatform()) {
                 updateView();
             }
@@ -115,6 +118,7 @@ void IceCreamDrop::updateIceCreamPosition(Action action) {
     }
     if (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
         iceCream->setYPos(iceCream->getYPos() + 2);
+        // iceCreamDisplay->updateStatus();
     }
 }
 
