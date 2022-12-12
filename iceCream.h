@@ -3,6 +3,7 @@
 #include "character.h"
 #include "action.h"
 
+#include <memory>
 using namespace std;
 class Game;
 class Border;
