@@ -1,4 +1,5 @@
 #include "gameDisplay.h"
+#include "gameObject.h"
 #include "bitmap.h"
 #include "border.h"
 #include "rectangle.h"
@@ -6,6 +7,7 @@
 #include <ncurses.h>
 #include <memory>
 #include <typeinfo>
+#include <vector>
 
 #include <iostream>
 using namespace std;

@@ -11,7 +11,7 @@ using namespace std;
 class StatusDisplay : public Display {
     vector<string> messages;
 public:
-    StatusDisplay(int n);
+    StatusDisplay();
     StatusDisplay(std::initializer_list<string> init);
     ~StatusDisplay();
     void setMessages(vector<string> messages);

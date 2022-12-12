@@ -7,11 +7,7 @@
 #include <iostream>
 using namespace std;
 
-StatusDisplay::StatusDisplay(int n) {
-    for (int i = 0; i < n; i++) {
-        messages.push_back("");
-    }
-}
+StatusDisplay::StatusDisplay() {}
 
 StatusDisplay::StatusDisplay(std::initializer_list<string> init) {
     for (auto elem : init) {

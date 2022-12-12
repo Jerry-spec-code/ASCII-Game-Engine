@@ -4,9 +4,6 @@
 #include "rectangle.h"
 #include "bitmap.h"
 #include "gameObject.h"
-#include "gameDisplay.h"
-#include "borderDisplay.h"
-#include "statusDisplay.h"
 #include "border.h"
 #include <vector>
 #include <memory>
@@ -14,6 +11,9 @@
 #include <time.h>
 #include "keyboard.h"
 #include "iceCream.h"
+#include "gameDisplay.h"
+#include "borderDisplay.h"
+#include "statusDisplay.h"
 
 IceCreamDrop::IceCreamDrop(): border{make_shared<Border>()}, lowerBoundHole{border->getBorderLength() / 4}, 
 upperBoundHole{3 * (border->getBorderLength() / 4)} {
@@ -24,8 +24,6 @@ IceCreamDrop::~IceCreamDrop() {}
 
 void IceCreamDrop::go() {			
     initscr();
-    shared_ptr<Display> display_border = make_shared<BorderDisplay>();
-    display_border->display();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
         display();
@@ -49,8 +47,10 @@ bool IceCreamDrop::atLastPlatform() {
 }
 
 void IceCreamDrop::display() {
-    shared_ptr<Display> display_status = make_shared<StatusDisplay>(3); 
-    shared_ptr<Display> display_objects = make_shared<GameDisplay>(getObjects());
+    shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
+    shared_ptr<StatusDisplay> display_status = make_shared<StatusDisplay>(); 
+    shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
+    display_border->display();
     display_objects->display();
     display_status->display();
     refresh();	

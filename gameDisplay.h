@@ -7,6 +7,7 @@
 
 using namespace std;
 
+class Game;
 class GameObject;
 class Character;
 class Rectangle;
