@@ -50,6 +50,7 @@ void IceCreamDrop::display() {
     shared_ptr<BorderDisplay> display_border = make_shared<BorderDisplay>();
     shared_ptr<StatusDisplay> display_status = make_shared<StatusDisplay>(); 
     shared_ptr<GameDisplay> display_objects = make_shared<GameDisplay>();
+    display_objects->setObjects(getObjects());
     display_border->display();
     display_objects->display();
     display_status->display();
