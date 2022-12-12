@@ -18,6 +18,7 @@
 #include "fly.h"
 #include "collision.h"
 
+#include <string>
 #include <chrono>
 #include <thread>
 
@@ -38,6 +39,7 @@ void IceCreamDrop::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     while (status != 0) {
+        iceCreamDisplay->inProgress();
         displayHelper();
         clock_t t = clock();
         while (clock() - t < updateInterval) {
@@ -128,7 +130,7 @@ void IceCreamDrop::updateView() {
         makeNew = true;
     }
     if (iceCream->getYPos() < 1) {
-        vanishUpdate();
+        iceCreamDisplay->vanishUpdate(numOfPlatformsPassed);
         status = 0;
     }
 }
@@ -154,6 +156,11 @@ void IceCreamDrop::moveIceCream(Action action) {
     bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
     cream->updateIceCreamPosition(action, border, fall);
+    if (fall) {
+        numOfPlatformsPassed++;
+        iceCreamDisplay->inProgress();
+        displayHelper();
+    }
     if (hitFly()) {
         for (int i = 0; i < 3 * offset; i++) {
             if (action == Action::RIGHT) {
@@ -162,6 +169,7 @@ void IceCreamDrop::moveIceCream(Action action) {
             else if (action == Action::LEFT) {
                 cream->updateIceCreamPosition(Action::RIGHT, border, fall);
             }
+            iceCreamDisplay->hitFlyUpdate(numOfPlatformsPassed);
             displayHelper();
             sleep_for(0.05s);
         }
@@ -174,10 +182,4 @@ void IceCreamDrop::displayHelper() {
     iceCreamDisplay->render();
 }
 
-void IceCreamDrop::vanishUpdate() {
-    vector<string> messages = iceCreamDisplay->getStatus();
-    messages.push_back("You disintegrated!");
-    messages.push_back("Tough loss.");
-    messages.push_back("You passed 2 platforms");
-    iceCreamDisplay->updateStatus(messages);
-}
+

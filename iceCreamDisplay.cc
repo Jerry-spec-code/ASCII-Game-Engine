@@ -26,3 +26,27 @@ vector<string> IceCreamDisplay::getStatus() {
 void IceCreamDisplay::updateObjects(vector<shared_ptr<GameObject>> objects) {
     display_objects->setObjects(objects);
 }
+
+void IceCreamDisplay::vanishUpdate(int numOfPlatformsPassed) {
+    string platformMessage = "You passed " +  to_string(numOfPlatformsPassed) + " platforms";
+    updateHelper("You disintegrated!", "Tough run.", platformMessage);
+}
+
+void IceCreamDisplay::hitFlyUpdate(int numOfPlatformsPassed) {
+    string platformMessage = "You passed " +  to_string(numOfPlatformsPassed) + " platforms";
+    updateHelper("You hit a fly!", "Tough run.", platformMessage);
+}
+
+void IceCreamDisplay::inProgress() {
+    updateHelper("Game in progress.", "Keep going!", "");
+}
+
+
+void IceCreamDisplay::updateHelper(string msg1, string msg2, string msg3) {
+    vector<string> messages = getStatus();
+    messages.clear();
+    messages.push_back(msg1);
+    messages.push_back(msg2);
+    messages.push_back(msg3);
+    updateStatus(messages);
+}

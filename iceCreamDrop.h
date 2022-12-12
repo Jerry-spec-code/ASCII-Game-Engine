@@ -24,6 +24,7 @@ class IceCreamDrop : public Game {
     bool makeNew = false;
     int status = 1; //1 is still playing, 0 means lost .
     const int updateInterval = 50000;
+    int numOfPlatformsPassed = 0;
 public:
     IceCreamDrop();
     ~IceCreamDrop();
@@ -42,7 +43,6 @@ private:
     bool hitFly();
     void moveIceCream(Action action);
     void displayHelper();
-    void vanishUpdate();
 };
 
 #endif
