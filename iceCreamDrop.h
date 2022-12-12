@@ -22,15 +22,13 @@ class IceCreamDrop : public Game {
     const int flyFrequency = 5; //Number of platforms passed per fly generated
     const int appleFrequency = 5; //Number of platforms passed per apple generated
     bool makeNew = false;
-    int status = 1; //1 is still playing, 0 means lost .
-    const int updateInterval = 50000;
+    int status = 1; //1 is still playing, 0 means lost.
     int numOfPlatformsPassed = 0;
 public:
     IceCreamDrop();
     ~IceCreamDrop();
     void position() override;
     void go() override;
-    shared_ptr<Border> getBorder();
 private:
     void positionPlatforms();
     void positionIceCream();

@@ -7,9 +7,6 @@
 #include <map>
 #include <ncurses.h>
 
-
-class Mapping;
-
 class Keyboard: public Controller{
   std::map<int,Action> mapping; 
 

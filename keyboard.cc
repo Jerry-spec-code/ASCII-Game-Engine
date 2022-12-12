@@ -1,5 +1,6 @@
 #include "keyboard.h"
 #include <string>
+#include <unistd.h>
 
 Keyboard::Keyboard() {
   setlocale(LC_ALL, "");
@@ -15,7 +16,13 @@ Keyboard::Keyboard() {
 
 Action Keyboard::action(){
   int n;
-  while ( (n = getch()) == ERR ) continue;
+  while ( (n = getch()) == ERR ) {
+    float time = getInputTime();
+    if (time > 0) {        
+        sleep(time);
+        break;
+    }
+  }
 
   if ( mapping.find(n) != mapping.end() ){
     return mapping[n];
