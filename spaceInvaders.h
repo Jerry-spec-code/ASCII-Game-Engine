@@ -7,10 +7,13 @@
 using namespace std;
 
 class SpaceInvadersDisplay;
+class GameObject;
 
 class SpaceInvaders : public Game {
+    shared_ptr<GameObject> rocket;
     shared_ptr<SpaceInvadersDisplay> spaceInvadersDisplay;
     int status = 1;
+    int updateInterval = 75000;
 public:
     SpaceInvaders();
     ~SpaceInvaders();
