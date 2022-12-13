@@ -88,7 +88,7 @@ int IceCreamDrop::getLastPlatformHeight() {
     while (i < border->getBorderHeight()) {
         i += offset;
     }
-    return i - 2 * offset; 
+    return i - offset; 
 }
 
 void IceCreamDrop::makeNewPlatform(int y) {
