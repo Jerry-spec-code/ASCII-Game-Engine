@@ -47,9 +47,6 @@ void SpaceInvaders::go() {
             noecho();
             Action action = input->getAction();	
             moveOrShoot(action);
-            if (status == 0) {
-                break;
-            }
             display();	
         }
         updateView();
@@ -104,21 +101,23 @@ void SpaceInvaders::positionRocketShip() {
 }
 
 void SpaceInvaders::spawnBullet(Direction direction) {
+    shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
     if (direction == Direction::EAST) {
-        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
-        addGameObject(bullet);
+        bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
     }
     else if (direction == Direction::WEST) {
-        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() - 3, rocket->getYPos());
-        addGameObject(bullet);
+        bullet = make_shared<Bullet>('-', rocket->getXPos() - 3, rocket->getYPos());
     }
     else if (direction == Direction::SOUTH) {
-        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos(), rocket->getYPos() + 3);
-        addGameObject(bullet);
+        bullet = make_shared<Bullet>('|', rocket->getXPos(), rocket->getYPos() + 3);
     }
     else if (direction == Direction::NORTH) {
-        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos(), rocket->getYPos() - 3);
-        addGameObject(bullet);
+        bullet = make_shared<Bullet>('|', rocket->getXPos(), rocket->getYPos() - 3);
+    }
+    addGameObject(bullet);
+    while (isEmpty(bullet->getXPos(), bullet->getYPos())) {
+        display();
+        bullet->move(direction);
     }
 }
 
@@ -149,3 +148,4 @@ void SpaceInvaders::moveAliens() {
         }
     }
 }
+

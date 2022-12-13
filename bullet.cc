@@ -26,4 +26,3 @@ void Bullet::setDirection(Direction direction) {
 Direction Bullet::getDirection() {
     return direction;
 }
-
