@@ -37,7 +37,7 @@ void SpaceInvaders::position() {
 void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
-    input->setInputTime(10000);
+    input->setInputTime(3000);
     wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
@@ -49,10 +49,10 @@ void SpaceInvaders::go() {
             action = input->getAction();	
             moveOrShoot(action);
             display();	
-            sleep_for(0.5s);
-        }
-        if (action == Action::NONE) {
-            updateView();
+            if (action == Action::NONE) {
+                updateView();
+                break;
+            }
         }
     }
     display();
@@ -128,7 +128,7 @@ void SpaceInvaders::spawnBullet(Direction direction) {
 }
 
 void SpaceInvaders::spawnAliens() {
-    for (int i = 0; i < border->getBorderHeight(); i++) {
+    for (int i = border->getBorderHeight() / 4; i < 3 * (border->getBorderHeight()) / 4; i++) {
         if (!border->isBorderRow(i, 0)) {
             shared_ptr<GameObject> alien = make_shared<Alien>('X', 0, i);
             addGameObject(alien);
