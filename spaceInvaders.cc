@@ -80,11 +80,11 @@ void SpaceInvaders::moveOrShoot(Action action) {
             ship->rotate();
         }
         else {
-            ship->move(action);
-            if (ship->hitBorder(border)) {
-                spaceInvadersDisplay->hitBorder(aliensKilled);
-                status = 0;
-            } 
+            ship->move(action); 
+        }
+        if (ship->hitBorder(border)) {
+            spaceInvadersDisplay->hitBorder(aliensKilled);
+            status = 0;
         }
     }
 }
