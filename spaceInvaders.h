@@ -18,6 +18,7 @@ class SpaceInvaders : public Game {
     shared_ptr<Border> border;
     int status = 1;
     int aliensKilled = 0;
+    int offset = 2;
     int updateInterval = 5000000;
 public:
     SpaceInvaders();

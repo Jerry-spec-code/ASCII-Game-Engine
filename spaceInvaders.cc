@@ -130,7 +130,7 @@ void SpaceInvaders::spawnBullet(Direction direction) {
 }
 
 void SpaceInvaders::spawnAliens() {
-    for (int i = border->getBorderHeight() / 4; i < 3 * (border->getBorderHeight()) / 4; i++) {
+    for (int i = offset; i < border->getBorderHeight() - offset; i++) {
         if (!border->isBorderRow(i, 0)) {
             shared_ptr<GameObject> alien = make_shared<Alien>('X', 0, i);
             addGameObject(alien);
