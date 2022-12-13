@@ -4,7 +4,6 @@
 #include "game.h"
 #include "action.h"
 #include "direction.h"
-#include <bits/stdc++.h>
 #include <memory>
 
 using namespace std;
@@ -20,7 +19,7 @@ class SpaceInvaders : public Game {
     int status = 1;
     int aliensKilled = 0;
     int offset = 2;
-    int updateInterval = INT_MAX;
+    int updateInterval = 15000000;
 public:
     SpaceInvaders();
     ~SpaceInvaders();
