@@ -19,7 +19,7 @@ class SpaceInvaders : public Game {
     int status = 1;
     int aliensKilled = 0;
     int offset = 2;
-    int updateInterval = 500000;
+    int updateInterval = 2500000;
 public:
     SpaceInvaders();
     ~SpaceInvaders();
