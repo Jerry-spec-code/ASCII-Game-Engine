@@ -3,7 +3,9 @@
 #include "keyboard.h"
 #include "spaceInvadersDisplay.h"
 #include "action.h"
+#include "direction.h"
 #include "border.h"
+#include "bullet.h"
 #include "rocketShip.h"
 #include "bullet.h"
 #include "spaceAlien.h"
@@ -66,7 +68,7 @@ void SpaceInvaders::moveOrShoot(Action action) {
     if (dynamic_cast<RocketShip *>(rocket.get())) {
         RocketShip *ship = static_cast<RocketShip *>(rocket.get());
         if (action == Action::UP) {
-            // spawnBullet(ship->getDirection());
+            spawnBullet(ship->getDirection());
         }
         else {
             ship->move(action);
@@ -100,8 +102,23 @@ void SpaceInvaders::positionRocketShip() {
     }
 }
 
-void SpaceInvaders::spawnBullet() {
-
+void SpaceInvaders::spawnBullet(Direction direction) {
+    if (direction == Direction::EAST) {
+        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
+        addGameObject(bullet);
+    }
+    else if (direction == Direction::WEST) {
+        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() - 3, rocket->getYPos());
+        addGameObject(bullet);
+    }
+    else if (direction == Direction::SOUTH) {
+        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos(), rocket->getYPos() + 3);
+        addGameObject(bullet);
+    }
+    else if (direction == Direction::NORTH) {
+        shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos(), rocket->getYPos() - 3);
+        addGameObject(bullet);
+    }
 }
 
 void SpaceInvaders::spawnAliens() {

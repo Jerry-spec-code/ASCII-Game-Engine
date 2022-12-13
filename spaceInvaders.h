@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "action.h"
+#include "direction.h"
 #include <memory>
 
 using namespace std;
@@ -29,7 +30,7 @@ private:
     void positionRocketShip();
     void spawnAliens();
     void moveAliens();
-    void spawnBullet();
+    void spawnBullet(Direction direction);
 };
 
 #endif
