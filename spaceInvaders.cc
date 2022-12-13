@@ -68,10 +68,7 @@ void SpaceInvaders::moveOrShoot(Action action) {
             spawnBullet(ship->getDirection());
         }
         else {
-            cout << rocket->getYPos() << endl;
             ship->move(action);
-            cout << rocket->getYPos() << endl;
-            cout << "done" << endl;
         }
     }
     //Check if any part collides with the border.
