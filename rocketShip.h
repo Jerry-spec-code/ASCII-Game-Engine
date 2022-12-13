@@ -7,7 +7,6 @@
 
 class RocketShip : public Bitmap {
     Direction direction;
-    int xCor, yCor; //COR stands for Center of Rotation.
 public:
     RocketShip();
     RocketShip(std::initializer_list<tuple<int, int, char>> init);

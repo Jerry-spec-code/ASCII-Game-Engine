@@ -9,6 +9,10 @@ Bitmap::Bitmap(std::initializer_list<tuple<int, int, char>> init) {
     }
 }
 
+void Bitmap::setMap(vector<tuple<int, int, char>> map) {
+    this->map = map;
+}
+
 vector<tuple<int, int, char>> Bitmap::getMap() {
     return map;
 }

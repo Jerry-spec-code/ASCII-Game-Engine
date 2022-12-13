@@ -32,22 +32,34 @@ void RocketShip::rotate() {
 void RocketShip::move(Action action) {
     if (action == Action::LEFT && direction == Direction::EAST || 
         action == Action::RIGHT && direction == Direction::WEST) {
-        //move up
-        yCor--;
+        vector<tuple<int, int, char>> map = getMap();
+        for (int i = 0; i < map.size(); i++) {
+            get<0>(map[i])--;
+        }
+        setMap(map);
     }
     else if (action == Action::RIGHT && direction == Direction::EAST || 
         action == Action::LEFT && direction == Direction::WEST) {
-        //move down
-        yCor++;
+        vector<tuple<int, int, char>> map = getMap();
+        for (int i = 0; i < map.size(); i++) {
+            get<0>(map[i])++;
+        }
+        setMap(map);
     }
     else if (action == Action::LEFT && direction == Direction::NORTH || 
         action == Action::RIGHT && direction == Direction::SOUTH) {
-        // move left
-        xCor--;
+        vector<tuple<int, int, char>> map = getMap();
+        for (int i = 0; i < map.size(); i++) {
+            get<1>(map[i])--;
+        }
+        setMap(map);
     }
     else if (action == Action::RIGHT && direction == Direction::NORTH || 
         action == Action::LEFT && direction == Direction::SOUTH) {
-        // move right
-        xCor++;
+        vector<tuple<int, int, char>> map = getMap();
+        for (int i = 0; i < map.size(); i++) {
+            get<1>(map[i])++;
+        }
+        setMap(map);
     }
 }
