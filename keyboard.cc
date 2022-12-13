@@ -22,20 +22,14 @@ Keyboard::Keyboard() {
 
 Action Keyboard::action(){
   int n;
-  n = getch();
-  // while ( (n = getch()) == ERR ) {
-  //   float time = getInputTime();
-  //   if (time > 0) {  
-  //       // sleep(time);
-  //       // wtimeout(stdscr, 1000);
-  //       // cout << "Hi" << endl;
-  //       break;
-  //   }
-  //   else {
-  //     cout << time << endl;
-  //   }
-  // }
-
+  if (getInputTime() < 0) {
+    while ((n = getch()) == ERR) {
+      continue;
+    }
+  }
+  else {
+    n = getch();
+  }
   if ( mapping.find(n) != mapping.end() ){
     return mapping[n];
   }

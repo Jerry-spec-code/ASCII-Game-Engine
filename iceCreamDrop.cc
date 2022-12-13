@@ -38,11 +38,13 @@ IceCreamDrop::~IceCreamDrop() {}
 void IceCreamDrop::go() {			
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
+    input->setInputTime(1000);
+    wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         iceCreamDisplay->inProgress();
         displayHelper();
-        clock_t t = clock();
-        while (clock() - t < updateInterval) {
+        // clock_t t = clock();
+        // while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
             if (dynamic_cast<IceCream *>(iceCream.get())) {
@@ -55,7 +57,7 @@ void IceCreamDrop::go() {
                 updateView();
             }
             displayHelper();	
-        }
+        // }
         updateView();
     }
     displayHelper();
