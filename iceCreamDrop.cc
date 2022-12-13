@@ -97,8 +97,7 @@ int IceCreamDrop::getLastPlatformHeight() {
 }
 
 void IceCreamDrop::makeNewPlatform(int y) {
-    // int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
-    int holeLocation = 30;
+    int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
     int randNum = 4 * getRandomNumber(0, 2) - 2;
     addGameObject(make_shared<Rectangle>('-', holeLocation - 1, 1, 1, y));
     addGameObject(make_shared<Rectangle>('-', border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y));
@@ -161,7 +160,7 @@ bool IceCreamDrop::hitFly() {
 void IceCreamDrop::moveIceCream(Action action) {
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
     cream->updateIceCreamPosition(action, border);
-    while (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1)) {
+    while (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
         iceCream->setYPos(iceCream->getYPos() + 2);
         numOfPlatformsPassed++;
         iceCreamDisplay->inProgress();
