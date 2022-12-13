@@ -117,7 +117,10 @@ void SpaceInvaders::spawnBullet(Direction direction) {
     addGameObject(bullet);
     while (isEmpty(bullet->getXPos(), bullet->getYPos())) {
         display();
+        cout << bullet->getXPos() << endl;
         bullet->move(direction);
+        cout << bullet->getXPos() << endl;
+        cout << "Done" << endl;
     }
 }
 
