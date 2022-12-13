@@ -12,6 +12,8 @@ public:
     ~Character();
     void setCharacter(char c);
     char getCharacter();
+    void move(Action action) override;
+    void move(Direction direction) override;
 };
 
 #endif

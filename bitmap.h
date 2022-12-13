@@ -17,6 +17,9 @@ public:
     void setMap(vector<tuple<int, int, char>> map); 
     void push_back(tuple<int, int, char> bit);
     void remove(tuple<int, int, char> bit);
+    void rotate() override;
+    void move(Action action) override;
+    void move(Direction direction) override;
 };
 
 #endif

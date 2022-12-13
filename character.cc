@@ -10,3 +10,6 @@ void Character::setCharacter(char c) {
 char Character::getCharacter() {
     return c;
 }
+
+void Character::move(Action action) {}
+void Character::move(Direction direction) {}

@@ -29,3 +29,8 @@ char Rectangle::getCharacter() {
 void Rectangle::setCharacter(char c) {
     this->c = c;
 }
+
+void Rectangle::rotate() {}
+
+void Rectangle::move(Action action) {}
+void Rectangle::move(Direction direction) {}

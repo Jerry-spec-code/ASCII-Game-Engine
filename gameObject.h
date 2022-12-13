@@ -1,5 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
+#include "action.h"
+#include "direction.h"
 
 #include <iostream>
 using namespace std;
@@ -20,6 +22,9 @@ public:
     void setYPos(int y);
     void setPos(int x, int y);
     void setPos(int x, int y, int height = 1);
+    virtual void rotate();
+    virtual void move(Action action);
+    virtual void move(Direction direction);
 };
 
 #endif

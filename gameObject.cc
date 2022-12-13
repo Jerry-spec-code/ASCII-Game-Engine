@@ -38,3 +38,9 @@ void GameObject::setPos(int x, int y, int height) {
     setYPos(y);
     setHeight(height);
 }
+
+void GameObject::rotate() {}
+
+void GameObject::move(Action action) {}
+
+void GameObject::move(Direction direction) {}

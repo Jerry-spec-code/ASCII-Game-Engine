@@ -10,7 +10,7 @@ class Bullet : public Character {
 public:
     Bullet(char c, int x, int y, int height = 1);
     ~Bullet();
-    void move(Direction direction);
+    void move(Direction direction) override;
     void setDirection(Direction direction);
     Direction getDirection();
 };

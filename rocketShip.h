@@ -17,8 +17,8 @@ public:
     ~RocketShip();
     Direction getDirection();
     void setDirection(Direction direction);
-    void rotate();
-    void move(Action action);
+    void rotate() override;
+    void move(Action action) override;
     bool hitBorder(shared_ptr<Border> border);
 };
 

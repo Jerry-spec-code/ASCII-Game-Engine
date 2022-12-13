@@ -20,6 +20,9 @@ public:
     void setWidth(int width);
     char getCharacter();
     void setCharacter(char c);
+    void rotate() override;
+    void move(Action action) override;
+    void move(Direction direction) override;
 };
 
 #endif

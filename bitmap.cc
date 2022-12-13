@@ -30,5 +30,10 @@ void Bitmap::remove(tuple<int, int, char> bit) {
     }
 }
 
+void Bitmap::rotate() {}
+
+void Bitmap::move(Action action) {}
+
+void Bitmap::move(Direction direction) {}
 
 
