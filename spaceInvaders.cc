@@ -86,6 +86,10 @@ void SpaceInvaders::moveOrShoot(Action action) {
             spaceInvadersDisplay->hitBorder(aliensKilled);
             status = 0;
         }
+        else if (hitAlien()) {
+            spaceInvadersDisplay->hitAlien(aliensKilled);
+            status = 0;
+        }
     }
 }
 
@@ -187,4 +191,17 @@ void SpaceInvaders::removeAlien(int x, int y) {
             }
         }
     }
+}
+
+bool SpaceInvaders::hitAlien() {
+    if (dynamic_cast<RocketShip *>(rocket.get())) {
+        RocketShip *ship = static_cast<RocketShip *>(rocket.get());
+        vector<tuple <int, int, char>> map = ship->getMap();
+        for (int i = 0; i < map.size(); i++) {
+            if (hasAlien(get<0>(map[i]), get<1>(map[i]))) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
