@@ -20,6 +20,10 @@ Keyboard::Keyboard() {
   mapping[KEY_LEFT] = Action::LEFT;
 }
 
+void Keyboard::setKey(char c, Action action) {
+  mapping[c] = action;
+}
+
 Action Keyboard::action(){
   int n = -1;
   if (getInputTime() < 0) {

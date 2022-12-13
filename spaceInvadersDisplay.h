@@ -22,6 +22,7 @@ public:
     void updateObjects(vector<shared_ptr<GameObject>> objects);
     void inProgress(); 
     void hitBorder(int numOfAliensHit);
+    void hitAlien(int numOfAliensHit);
 private:
     void updateHelper(string msg1, string msg2, string msg3);
 };

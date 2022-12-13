@@ -38,6 +38,7 @@ void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
     input->setInputTime(2000);
+    input->setKey('r', Action::CW);
     wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
@@ -71,6 +72,9 @@ void SpaceInvaders::moveOrShoot(Action action) {
         RocketShip *ship = static_cast<RocketShip *>(rocket.get());
         if (action == Action::UP) {
             spawnBullet(ship->getDirection());
+        }
+        else if (action == Action::CW) {
+            ship->rotate();
         }
         else {
             ship->move(action);

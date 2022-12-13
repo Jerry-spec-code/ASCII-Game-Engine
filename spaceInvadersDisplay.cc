@@ -39,6 +39,11 @@ void SpaceInvadersDisplay::hitBorder(int numOfAliensHit) {
     updateHelper("You hit the border!", alienMessage, "Better luck next time!");
 }
 
+void SpaceInvadersDisplay::hitAlien(int numOfAliensHit) {
+    string alienMessage = "You shot " +  to_string(numOfAliensHit) + " aliens";
+    updateHelper("You hit an alien!", alienMessage, "Better luck next time!");
+}
+
 void SpaceInvadersDisplay::updateHelper(string msg1, string msg2, string msg3) {
     vector<string> messages = getStatus();
     messages.clear();

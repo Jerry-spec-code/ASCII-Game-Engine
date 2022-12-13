@@ -11,6 +11,7 @@ class Keyboard: public Controller{
   std::map<int,Action> mapping; 
 
   Action action() override;
+  void setKey(char c, Action action) override;
  public:
   Keyboard();
 };

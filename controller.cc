@@ -11,3 +11,5 @@ void Controller::setInputTime(float inputTime) {
 float Controller::getInputTime() {
   return inputTime;
 }
+
+void Controller::setKey(char c, Action action) {}
