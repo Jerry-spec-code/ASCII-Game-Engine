@@ -17,7 +17,8 @@ class SpaceInvaders : public Game {
     shared_ptr<SpaceInvadersDisplay> spaceInvadersDisplay;
     shared_ptr<Border> border;
     int status = 1;
-    int updateInterval = 75000;
+    int aliensKilled = 0;
+    int updateInterval = 500000;
 public:
     SpaceInvaders();
     ~SpaceInvaders();

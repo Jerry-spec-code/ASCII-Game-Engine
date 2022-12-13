@@ -37,7 +37,7 @@ void SpaceInvaders::position() {
 void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
-    input->setInputTime(3000);
+    input->setInputTime(2000);
     wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
@@ -123,6 +123,7 @@ void SpaceInvaders::spawnBullet(Direction direction) {
     }
     if (hasAlien(bullet->getXPos(), bullet->getYPos())) {
         removeAlien(bullet->getXPos(), bullet->getYPos());
+        aliensKilled++;
     }
     removeGameObject(bullet);
 }
