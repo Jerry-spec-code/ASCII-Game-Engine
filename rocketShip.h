@@ -5,6 +5,10 @@
 #include "direction.h"
 #include "action.h"
 
+#include <memory>
+
+class Border;
+
 class RocketShip : public Bitmap {
     Direction direction;
 public:
@@ -15,6 +19,7 @@ public:
     void setDirection(Direction direction);
     void rotate();
     void move(Action action);
+    bool hitBorder(shared_ptr<Border> border);
 };
 
 #endif

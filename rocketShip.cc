@@ -1,4 +1,5 @@
 #include "rocketShip.h"
+#include "border.h"
 
 RocketShip::RocketShip() {}
 
@@ -66,4 +67,14 @@ void RocketShip::move(Action action) {
         this->setXPos(this->getXPos() + 1);
         setMap(map);
     }
+}
+
+bool RocketShip::hitBorder(shared_ptr<Border> border) {
+    vector<tuple<int, int, char>> map = getMap();
+    for (int i = 0; i < map.size(); i++) {
+        if(border->onBorder(get<1>(map[i]), get<0>(map[i]))) {
+            return true;
+        }
+    }
+    return false;
 }

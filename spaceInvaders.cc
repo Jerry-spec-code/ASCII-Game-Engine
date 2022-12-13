@@ -74,15 +74,17 @@ void SpaceInvaders::moveOrShoot(Action action) {
         }
         else {
             ship->move(action);
+            if (ship->hitBorder(border)) {
+                spaceInvadersDisplay->hitBorder(aliensKilled);
+                status = 0;
+            } 
         }
     }
-    //Check if any part collides with the border.
 }
 
 void SpaceInvaders::updateView() {
     spawnAliens();
     moveAliens();
-    // If an alien collides with anything other than you or the border, you lose. 
 }
 
 void SpaceInvaders::positionRocketShip() {
