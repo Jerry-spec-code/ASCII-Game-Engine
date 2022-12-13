@@ -4,6 +4,7 @@
 #include "game.h"
 #include "action.h"
 #include "direction.h"
+#include <bits/stdc++.h>
 #include <memory>
 
 using namespace std;
