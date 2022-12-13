@@ -161,7 +161,7 @@ bool IceCreamDrop::hitFly() {
 void IceCreamDrop::moveIceCream(Action action) {
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
     cream->updateIceCreamPosition(action, border);
-    while (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
+    while (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1)) {
         iceCream->setYPos(iceCream->getYPos() + 2);
         numOfPlatformsPassed++;
         iceCreamDisplay->inProgress();
