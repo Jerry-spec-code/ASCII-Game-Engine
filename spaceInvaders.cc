@@ -43,17 +43,16 @@ void SpaceInvaders::go() {
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
         display();
+        if (hitAlien()) {
+            spaceInvadersDisplay->hitAlien(aliensKilled);
+            break;
+        }
         clock_t t = clock();
         Action action = Action::NONE;
         while (clock() - t < updateInterval) {
             noecho();
             action = input->getAction();
             if (action == Action::NONE) {
-                break;
-            }
-            if (hitAlien()) {
-                spaceInvadersDisplay->hitAlien(aliensKilled);
-                status = 0;
                 break;
             }	
             moveOrShoot(action);
@@ -88,6 +87,10 @@ void SpaceInvaders::moveOrShoot(Action action) {
         }
         if (ship->hitBorder(border)) {
             spaceInvadersDisplay->hitBorder(aliensKilled);
+            status = 0;
+        }
+        else if (hitAlien()) {
+            spaceInvadersDisplay->hitAlien(aliensKilled);
             status = 0;
         }
     }
