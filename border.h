@@ -19,10 +19,10 @@ public:
     const int getBorderLength();
     const int getBorderHeight();
     shared_ptr<Bitmap> getBorder();
-    bool onBorder(int i, int j) const;
-    bool isCorner(int i, int j) const;
-    bool isBorderRow(int i, int j) const;
-    bool isBorderColumn(int i, int j) const;
+    bool onBorder(int y, int x) const;
+    bool isCorner(int y, int xj) const;
+    bool isBorderRow(int y, int x) const;
+    bool isBorderColumn(int y, int x) const;
 };
 
 #endif
