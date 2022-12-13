@@ -98,6 +98,7 @@ void SpaceInvaders::positionRocketShip() {
         ship->push_back(make_tuple(xCor - 2, yCor, 'O'));
         ship->push_back(make_tuple(xCor, yCor + 1, 'O'));
         ship->push_back(make_tuple(xCor, yCor - 1, 'O'));
+        ship->setDirection(Direction::WEST);
         addGameObject(rocket);
     }
 }
