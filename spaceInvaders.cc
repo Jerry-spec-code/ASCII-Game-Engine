@@ -37,7 +37,7 @@ void SpaceInvaders::position() {
 void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
-    input->setInputTime(500);
+    input->setInputTime(1000);
     wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
