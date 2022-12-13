@@ -32,6 +32,7 @@ private:
     void moveAliens();
     void spawnBullet(Direction direction);
     bool hasAlien(int x, int y);
+    void removeAlien(int x, int y);
 };
 
 #endif
