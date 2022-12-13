@@ -24,7 +24,8 @@ rocket{make_shared<RocketShip>()} {}
 SpaceInvaders::~SpaceInvaders() {}
 
 void SpaceInvaders::position() {
-
+    // Position the rocket ship
+    // Position 3 columns of aliens on each side. 
 }
 
 void SpaceInvaders::go() {
@@ -67,9 +68,11 @@ void SpaceInvaders::moveOrShoot(Action action) {
             ship->move(action);
         }
     }
+    //Check if any part collides with the border.
 }
 
 void SpaceInvaders::updateView() {
+    //Spawn another row of aliens on each side. (Easy method, just spawn at the borders).
     // Everything to the left of the rocket, move right. 
     // Everything to the right of the rocket, move left. 
     // If a bullet collides with an alien, destroy both.

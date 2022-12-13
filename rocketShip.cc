@@ -33,17 +33,21 @@ void RocketShip::move(Action action) {
     if (action == Action::LEFT && direction == Direction::EAST || 
         action == Action::RIGHT && direction == Direction::WEST) {
         //move up
+        yCOR--;
     }
     else if (action == Action::RIGHT && direction == Direction::EAST || 
         action == Action::LEFT && direction == Direction::WEST) {
         //move down
+        yCOR++;
     }
     else if (action == Action::LEFT && direction == Direction::NORTH || 
         action == Action::RIGHT && direction == Direction::SOUTH) {
         // move left
+        xCOR--;
     }
     else if (action == Action::RIGHT && direction == Direction::NORTH || 
         action == Action::LEFT && direction == Direction::SOUTH) {
         // move right
+        xCOR++;
     }
 }

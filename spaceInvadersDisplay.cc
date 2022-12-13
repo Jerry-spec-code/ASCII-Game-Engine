@@ -31,7 +31,7 @@ void SpaceInvadersDisplay::updateObjects(vector<shared_ptr<GameObject>> objects)
 }
 
 void SpaceInvadersDisplay::inProgress() {
-    updateHelper("Shooting in progress.", "Stay away from the bullets!", "");
+    updateHelper("Shoot the aliens!", "Don't let hit you!", "Don't run into the walls!");
 }
 
 void SpaceInvadersDisplay::updateHelper(string msg1, string msg2, string msg3) {
