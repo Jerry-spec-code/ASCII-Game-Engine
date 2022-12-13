@@ -49,6 +49,9 @@ void SpaceInvaders::go() {
             noecho();
             action = input->getAction();	
             moveOrShoot(action);
+            if (status == 0) {
+                break;
+            }
             display();	
             if (action == Action::NONE) {
                 updateView();
