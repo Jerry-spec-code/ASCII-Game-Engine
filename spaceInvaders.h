@@ -19,7 +19,7 @@ class SpaceInvaders : public Game {
     int status = 1;
     int aliensKilled = 0;
     int offset = 2;
-    size_t updateInterval = 25000000;
+    int updateInterval = INT_MAX;
 public:
     SpaceInvaders();
     ~SpaceInvaders();
