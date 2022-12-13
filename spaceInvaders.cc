@@ -116,7 +116,7 @@ void SpaceInvaders::spawnBullet(Direction direction) {
     }
     addGameObject(bullet);
     while (!hasAlien(bullet->getXPos(), bullet->getYPos()) && 
-        !border->onBorder(bullet->getXPos(), bullet->getYPos())) {
+        !border->onBorder(bullet->getYPos(), bullet->getXPos())) {
         display();
         bullet->move(direction);
     }
