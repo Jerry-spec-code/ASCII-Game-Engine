@@ -35,7 +35,7 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<1>(map[i])--;
-            this->setYPos(this->getYPos() - 1);
+            setYPos(getYPos() - 1);
         }
         setMap(map);
     }
@@ -44,7 +44,7 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<1>(map[i])++;
-            this->setYPos(this->getYPos() + 1);
+            setYPos(getYPos() + 1);
         }
         setMap(map);
     }
