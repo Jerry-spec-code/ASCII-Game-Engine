@@ -49,6 +49,7 @@ void SpaceInvaders::go() {
             moveOrShoot(action);
             display();	
         }
+        sleep_for(0.5s);
         updateView();
     }
     display();
@@ -77,9 +78,6 @@ void SpaceInvaders::moveOrShoot(Action action) {
 void SpaceInvaders::updateView() {
     spawnAliens();
     moveAliens();
-    // Everything to the left of the rocket, move right. 
-    // Everything to the right of the rocket, move left. 
-    // If a bullet collides with an alien, destroy both.
     // If an alien collides with anything other than you or the border, you lose. 
 }
 
