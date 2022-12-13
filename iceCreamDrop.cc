@@ -98,7 +98,7 @@ int IceCreamDrop::getLastPlatformHeight() {
 
 void IceCreamDrop::makeNewPlatform(int y) {
     int holeLocation = getRandomNumber(lowerBoundHole, upperBoundHole);
-    int randNum = 2 * getRandomNumber(0, 1) - 1;
+    int randNum = 4 * getRandomNumber(0, 2) - 2;
     addGameObject(make_shared<Rectangle>('-', holeLocation - 1, 1, 1, y));
     addGameObject(make_shared<Rectangle>('-', border->getBorderLength() - 4 - holeLocation, 1, holeLocation + 3, y));
     makeFly(holeLocation + randNum, y - 1);
