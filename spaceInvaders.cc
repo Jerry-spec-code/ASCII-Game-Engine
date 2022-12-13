@@ -47,16 +47,19 @@ void SpaceInvaders::go() {
         Action action = Action::NONE;
         while (clock() - t < updateInterval) {
             noecho();
-            action = input->getAction();	
+            action = input->getAction();
+            if (action == Action::NONE) {
+                break;
+            }
+            if (hitAlien()) {
+                status = 0;
+                break;
+            }	
             moveOrShoot(action);
             if (status == 0) {
                 break;
             }
             display();	
-            if (action == Action::NONE) {
-                updateView();
-                break;
-            }
         }
         updateView();
     }
@@ -84,10 +87,6 @@ void SpaceInvaders::moveOrShoot(Action action) {
         }
         if (ship->hitBorder(border)) {
             spaceInvadersDisplay->hitBorder(aliensKilled);
-            status = 0;
-        }
-        else if (hitAlien()) {
-            spaceInvadersDisplay->hitAlien(aliensKilled);
             status = 0;
         }
     }
