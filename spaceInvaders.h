@@ -2,6 +2,7 @@
 #define SPACEINVADERS_H
 
 #include "game.h"
+#include "action.h"
 #include <memory>
 
 using namespace std;
@@ -21,6 +22,8 @@ public:
     void go() override;
 private:
     void display();
+    void moveOrShoot(Action action);
+    void updateView();
 };
 
 #endif
