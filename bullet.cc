@@ -1,4 +1,5 @@
 #include "bullet.h"
+#include "border.h"
 
 Bullet::Bullet(char c, int x, int y, int height): Character{c, x, y, height} {}
 
@@ -25,4 +26,8 @@ void Bullet::setDirection(Direction direction) {
 
 Direction Bullet::getDirection() {
     return direction;
+}
+
+bool Bullet::hitBorder(shared_ptr<Border> border) {
+    return border->onBorder(this->getYPos(), this->getXPos());
 }
