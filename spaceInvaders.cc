@@ -43,14 +43,17 @@ void SpaceInvaders::go() {
         spaceInvadersDisplay->inProgress();
         display();
         clock_t t = clock();
+        Action action = Action::NONE;
         while (clock() - t < updateInterval) {
             noecho();
-            Action action = input->getAction();	
+            action = input->getAction();	
             moveOrShoot(action);
             display();	
             sleep_for(0.5s);
         }
-        updateView();
+        if (action == Action::NONE) {
+            updateView();
+        }
     }
     display();
     sleep_for(5s);

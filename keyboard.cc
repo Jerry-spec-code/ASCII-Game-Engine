@@ -21,7 +21,7 @@ Keyboard::Keyboard() {
 }
 
 Action Keyboard::action(){
-  int n;
+  int n = -1;
   if (getInputTime() < 0) {
     while ((n = getch()) == ERR) {
       continue;
@@ -32,6 +32,9 @@ Action Keyboard::action(){
   }
   if ( mapping.find(n) != mapping.end() ){
     return mapping[n];
+  }
+  else if (n == -1) {
+    return Action::NONE;
   }
   return Action::INVALID;
 }
