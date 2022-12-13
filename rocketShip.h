@@ -13,10 +13,6 @@ public:
     RocketShip(std::initializer_list<tuple<int, int, char>> init);
     ~RocketShip();
     Direction getDirection();
-    // void setXCor(int xCor);
-    // void setYCor(int yCor);
-    // int getXCor();
-    // int getYCor();
     void setDirection(Direction direction);
     void rotate();
     void move(Action action);

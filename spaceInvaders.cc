@@ -64,11 +64,11 @@ void SpaceInvaders::display() {
 
 void SpaceInvaders::moveOrShoot(Action action) {
     if (dynamic_cast<RocketShip *>(rocket.get())) {
+        RocketShip *ship = static_cast<RocketShip *>(rocket.get());
         if (action == Action::UP) {
-            // Spawn a bullet 
+            // spawnBullet(ship->getDirection());
         }
         else {
-            RocketShip *ship = static_cast<RocketShip *>(rocket.get());
             ship->move(action);
         }
     }
@@ -98,6 +98,10 @@ void SpaceInvaders::positionRocketShip() {
         ship->push_back(make_tuple(xCor, yCor - 1, 'O'));
         addGameObject(rocket);
     }
+}
+
+void SpaceInvaders::spawnBullet() {
+
 }
 
 void SpaceInvaders::spawnAliens() {

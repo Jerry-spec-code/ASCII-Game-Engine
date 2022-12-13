@@ -29,6 +29,7 @@ private:
     void positionRocketShip();
     void spawnAliens();
     void moveAliens();
+    void spawnBullet();
 };
 
 #endif

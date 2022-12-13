@@ -6,20 +6,6 @@ RocketShip::RocketShip(std::initializer_list<tuple<int, int, char>> init): Bitma
 
 RocketShip::~RocketShip() {}
 
-// void RocketShip::setXCor(int xCor) {
-//     this->xCor = xCor;
-// }
-// void RocketShip::setYCor(int yCor) {
-//     this->yCor = yCor;
-// }
-
-// int RocketShip::getXCor() {
-//     return xCor;
-// }
-// int RocketShip::getYCor() {
-//     return yCor;
-// }
-
 void RocketShip::setDirection(Direction direction) {
     this->direction = direction;
 }
