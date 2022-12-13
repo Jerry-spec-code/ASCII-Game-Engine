@@ -11,6 +11,8 @@ public:
     Bullet(char c, int x, int y, int height = 1);
     ~Bullet();
     void move(Direction direction);
+    Direction getDirection();
+    void setDirection(Direction direction);
 };
 
 #endif
