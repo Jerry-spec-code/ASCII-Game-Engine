@@ -4,7 +4,10 @@
 #include "direction.h"
 
 #include <iostream>
+#include <memory>
 using namespace std;
+
+class Border;
 
 class GameObject {
     int height;
@@ -25,6 +28,7 @@ public:
     virtual void rotate();
     virtual void move(Action action);
     virtual void move(Direction direction);
+    virtual bool hitBorder(shared_ptr<Border> border);
 };
 
 #endif

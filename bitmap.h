@@ -7,6 +7,8 @@
 #include <iostream>
 using namespace std;
 
+class Border;
+
 class Bitmap: public GameObject {
     vector<tuple<int, int, char>> map;
 public:
@@ -20,6 +22,7 @@ public:
     void rotate() override;
     void move(Action action) override;
     void move(Direction direction) override;
+    bool hitBorder(shared_ptr<Border> border) override;
 };
 
 #endif

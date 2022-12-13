@@ -3,7 +3,11 @@
 #include "gameObject.h"
 
 #include <iostream>
+#include <memory>
 using namespace std;
+
+
+class Border;
 
 class Character: public GameObject {
     char c;
@@ -14,6 +18,7 @@ public:
     char getCharacter();
     void move(Action action) override;
     void move(Direction direction) override;
+    bool hitBorder(shared_ptr<Border> border) override;
 };
 
 #endif

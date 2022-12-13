@@ -34,3 +34,14 @@ void Rectangle::rotate() {}
 
 void Rectangle::move(Action action) {}
 void Rectangle::move(Direction direction) {}
+
+bool Rectangle::hitBorder(shared_ptr<Border> border) {
+    for (int i = getXPos(); i < getXPos() + length; i++) {
+        for (int j = getYPos(); j < getYPos() + length; j++) {
+            if(border->onBorder(j, i)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

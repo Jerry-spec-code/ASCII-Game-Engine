@@ -1,4 +1,5 @@
 #include "bitmap.h"
+#include "border.h"
 
 Bitmap::Bitmap() {}
 Bitmap::~Bitmap() {}
@@ -36,4 +37,12 @@ void Bitmap::move(Action action) {}
 
 void Bitmap::move(Direction direction) {}
 
+bool Bitmap::hitBorder(shared_ptr<Border> border) {
+    for (int i = 0; i < map.size(); i++) {
+        if(border->onBorder(get<1>(map[i]), get<0>(map[i]))) {
+            return true;
+        }
+    }
+    return false;
+}
 

@@ -6,6 +6,8 @@
 #include <iostream>
 using namespace std;
 
+class Border;
+
 class Rectangle: public GameObject {
     int length;
     int width;
@@ -23,6 +25,7 @@ public:
     void rotate() override;
     void move(Action action) override;
     void move(Direction direction) override;
+    bool hitBorder(shared_ptr<Border> border) override;
 };
 
 #endif

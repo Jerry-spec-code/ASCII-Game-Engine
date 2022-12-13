@@ -1,4 +1,5 @@
 #include "gameObject.h"
+#include "border.h"
 
 GameObject::GameObject() {}
 GameObject::GameObject(int x, int y, int height): x{x}, y{y}, height{height} {}
@@ -44,3 +45,7 @@ void GameObject::rotate() {}
 void GameObject::move(Action action) {}
 
 void GameObject::move(Direction direction) {}
+
+bool GameObject::hitBorder(shared_ptr<Border> border) {
+    return border->onBorder(y, x);
+}
