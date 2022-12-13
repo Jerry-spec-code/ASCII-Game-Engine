@@ -47,7 +47,7 @@ void IceCreamDrop::go() {
         while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
-            if (action == Action::INVALID) {
+            if (action == Action::NONE) {
                 break;
             }
             if (dynamic_cast<IceCream *>(iceCream.get())) {
