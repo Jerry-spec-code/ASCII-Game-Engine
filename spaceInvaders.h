@@ -18,7 +18,7 @@ class SpaceInvaders : public Game {
     shared_ptr<Border> border;
     int status = 1;
     int aliensKilled = 0;
-    int updateInterval = 100000;
+    int updateInterval = 500000;
 public:
     SpaceInvaders();
     ~SpaceInvaders();
