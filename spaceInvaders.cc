@@ -115,12 +115,9 @@ void SpaceInvaders::spawnBullet(Direction direction) {
         bullet = make_shared<Bullet>('|', rocket->getXPos(), rocket->getYPos() - 3);
     }
     addGameObject(bullet);
-    while (isEmpty(bullet->getXPos(), bullet->getYPos())) {
+    while (!hasAlien(bullet->getXPos(), bullet->getYPos())) {
         display();
-        cout << bullet->getXPos() << endl;
         bullet->move(direction);
-        cout << bullet->getXPos() << endl;
-        cout << "Done" << endl;
     }
 }
 
@@ -150,5 +147,17 @@ void SpaceInvaders::moveAliens() {
             }
         }
     }
+}
+
+bool SpaceInvaders::hasAlien(int x, int y) {
+    vector<shared_ptr<GameObject>> objects = getObjects();
+    for (int i = 0; i < objects.size(); i++) {
+        if (dynamic_cast<Alien *>(objects[i].get())) {
+            if (objects[i]->getXPos() == x && objects[i]->getYPos() == y) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
