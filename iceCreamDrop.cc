@@ -38,6 +38,7 @@ IceCreamDrop::~IceCreamDrop() {}
 void IceCreamDrop::go() {			
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
+    wtimeout(stdscr, 5000);
     while (status != 0) {
         iceCreamDisplay->inProgress();
         displayHelper();

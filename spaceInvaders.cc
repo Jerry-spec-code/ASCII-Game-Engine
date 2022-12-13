@@ -30,7 +30,6 @@ void SpaceInvaders::go() {
     shared_ptr<Controller> input = make_shared<Keyboard>();
     wtimeout(stdscr, 5000);
     Action action = input->getAction();
-    cout << "Hello" << endl;
     // while (action == Action::INVALID) {
     //     action = input->getAction();
     // }	
