@@ -35,8 +35,8 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<1>(map[i])--;
-            this->setYPos(this->getYPos() - 1);
         }
+        this->setYPos(this->getYPos() - 1);
         setMap(map);
     }
     else if (action == Action::RIGHT && direction == Direction::EAST || 
@@ -44,8 +44,8 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<1>(map[i])++;
-            this->setYPos(this->getYPos() + 1);
         }
+        this->setYPos(this->getYPos() + 1);
         setMap(map);
     }
     else if (action == Action::LEFT && direction == Direction::NORTH || 
@@ -53,8 +53,8 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<0>(map[i])--;
-            this->setXPos(this->getXPos() - 1);
         }
+        this->setXPos(this->getXPos() - 1);
         setMap(map);
     }
     else if (action == Action::RIGHT && direction == Direction::NORTH || 
@@ -62,8 +62,8 @@ void RocketShip::move(Action action) {
         vector<tuple<int, int, char>> map = getMap();
         for (int i = 0; i < map.size(); i++) {
             get<0>(map[i])++;
-            this->setXPos(this->getXPos() + 1);
         }
+        this->setXPos(this->getXPos() + 1);
         setMap(map);
     }
 }
