@@ -3,10 +3,12 @@
 #include "keyboard.h"
 #include "spaceInvadersDisplay.h"
 #include "action.h"
+#include "border.h"
 #include "rocketShip.h"
 #include "bullet.h"
 #include "spaceAlien.h"
 #include <unistd.h>
+#include <time.h>
 
 #include <string>
 #include <chrono>
@@ -19,19 +21,21 @@ using namespace std::chrono_literals;
 using std::chrono::system_clock;
 
 SpaceInvaders::SpaceInvaders(): spaceInvadersDisplay{make_shared<SpaceInvadersDisplay>()}, 
-rocket{make_shared<RocketShip>()} {}
+rocket{make_shared<RocketShip>()}, border{make_shared<Border>()} {}
 
 SpaceInvaders::~SpaceInvaders() {}
 
 void SpaceInvaders::position() {
-    // Position the rocket ship
-    // Position 3 columns of aliens on each side. 
+    srand (time(NULL));
+    positionRocketShip();
+    spawnAliens();
+    moveAliens();
 }
 
 void SpaceInvaders::go() {
     initscr();
     shared_ptr<Controller> input = make_shared<Keyboard>();
-    input->setInputTime(5000);
+    input->setInputTime(500);
     wtimeout(stdscr, input->getInputTime());
     while (status != 0) {
         spaceInvadersDisplay->inProgress();
@@ -72,9 +76,54 @@ void SpaceInvaders::moveOrShoot(Action action) {
 }
 
 void SpaceInvaders::updateView() {
-    //Spawn another row of aliens on each side. (Easy method, just spawn at the borders).
+    spawnAliens();
+    moveAliens();
     // Everything to the left of the rocket, move right. 
     // Everything to the right of the rocket, move left. 
     // If a bullet collides with an alien, destroy both.
     // If an alien collides with anything other than you or the border, you lose. 
+}
+
+void SpaceInvaders::positionRocketShip() {
+    if (dynamic_cast<RocketShip *>(rocket.get())) {
+        rocket->setXPos(border->getBorderLength() / 2);
+        rocket->setYPos(border->getBorderHeight() / 2);
+        int xCor = rocket->getXPos();
+        int yCor = rocket->getYPos();
+        RocketShip *ship = static_cast<RocketShip *>(rocket.get());
+        ship->push_back(make_tuple(xCor, yCor, 'O'));
+        ship->push_back(make_tuple(xCor - 1, yCor, 'O'));
+        ship->push_back(make_tuple(xCor - 2, yCor, 'O'));
+        ship->push_back(make_tuple(xCor, yCor + 1, 'O'));
+        ship->push_back(make_tuple(xCor, yCor - 1, 'O'));
+        addGameObject(rocket);
+    }
+}
+
+void SpaceInvaders::spawnAliens() {
+    for (int i = 0; i < border->getBorderHeight(); i++) {
+        if (!border->isBorderRow(i, 0)) {
+            shared_ptr<GameObject> alien = make_shared<Alien>('X', 0, i);
+            addGameObject(alien);
+        }
+        if (!border->isBorderRow(i, border->getBorderLength())) {
+            shared_ptr<GameObject> alien = make_shared<Alien>('X', border->getBorderLength() - 1, i);
+            addGameObject(alien);
+        }
+    } 
+
+}
+
+void SpaceInvaders::moveAliens() {
+    vector<shared_ptr<GameObject>> objects = getObjects();
+    for (int i = 0; i < objects.size(); i++) {
+        if (dynamic_cast<Alien *>(objects[i].get())) {
+            if (objects[i]->getXPos() < rocket->getXPos()) {
+                objects[i]->setXPos(objects[i]->getXPos() + 1);
+            }
+            else {
+                objects[i]->setXPos(objects[i]->getXPos() - 1);
+            }
+        }
+    }
 }

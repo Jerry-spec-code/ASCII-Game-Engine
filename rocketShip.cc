@@ -6,6 +6,20 @@ RocketShip::RocketShip(std::initializer_list<tuple<int, int, char>> init): Bitma
 
 RocketShip::~RocketShip() {}
 
+// void RocketShip::setXCor(int xCor) {
+//     this->xCor = xCor;
+// }
+// void RocketShip::setYCor(int yCor) {
+//     this->yCor = yCor;
+// }
+
+// int RocketShip::getXCor() {
+//     return xCor;
+// }
+// int RocketShip::getYCor() {
+//     return yCor;
+// }
+
 void RocketShip::setDirection(Direction direction) {
     this->direction = direction;
 }
@@ -33,21 +47,21 @@ void RocketShip::move(Action action) {
     if (action == Action::LEFT && direction == Direction::EAST || 
         action == Action::RIGHT && direction == Direction::WEST) {
         //move up
-        yCOR--;
+        yCor--;
     }
     else if (action == Action::RIGHT && direction == Direction::EAST || 
         action == Action::LEFT && direction == Direction::WEST) {
         //move down
-        yCOR++;
+        yCor++;
     }
     else if (action == Action::LEFT && direction == Direction::NORTH || 
         action == Action::RIGHT && direction == Direction::SOUTH) {
         // move left
-        xCOR--;
+        xCor--;
     }
     else if (action == Action::RIGHT && direction == Direction::NORTH || 
         action == Action::LEFT && direction == Direction::SOUTH) {
         // move right
-        xCOR++;
+        xCor++;
     }
 }
