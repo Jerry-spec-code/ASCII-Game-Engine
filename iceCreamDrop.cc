@@ -47,6 +47,9 @@ void IceCreamDrop::go() {
         while (clock() - t < updateInterval) {
             noecho();
             Action action = input->getAction();	
+            if (action == Action::INVALID) {
+                break;
+            }
             if (dynamic_cast<IceCream *>(iceCream.get())) {
                 moveIceCream(action);
                 if (status == 0) {
@@ -61,7 +64,7 @@ void IceCreamDrop::go() {
         updateView();
     }
     displayHelper();
-    sleep_for(5s);
+    sleep_for(3s);
     endwin();			
 }
 
