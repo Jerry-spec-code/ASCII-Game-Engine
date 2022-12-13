@@ -166,6 +166,14 @@ void IceCreamDrop::moveIceCream(Action action) {
         numOfPlatformsPassed++;
         iceCreamDisplay->inProgress();
         displayHelper();
+        if (hitFly()) {
+            removeGameObject(iceCream);
+            iceCreamDisplay->hitFlyUpdate(numOfPlatformsPassed);
+            displayHelper();
+            sleep_for(0.05s);
+            status = 0;
+            break;
+        }
     }
     if (hitFly()) {
         for (int i = 0; i < 3 * offset; i++) {
