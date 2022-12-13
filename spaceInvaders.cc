@@ -52,6 +52,7 @@ void SpaceInvaders::go() {
                 break;
             }
             if (hitAlien()) {
+                spaceInvadersDisplay->hitAlien(aliensKilled);
                 status = 0;
                 break;
             }	
