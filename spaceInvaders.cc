@@ -103,15 +103,19 @@ void SpaceInvaders::positionRocketShip() {
 void SpaceInvaders::spawnBullet(Direction direction) {
     shared_ptr<Bullet> bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
     if (direction == Direction::EAST) {
+        cout << "east" << endl;
         bullet = make_shared<Bullet>('-', rocket->getXPos() + 3, rocket->getYPos());
     }
     else if (direction == Direction::WEST) {
+        cout << "west" << endl;
         bullet = make_shared<Bullet>('-', rocket->getXPos() - 3, rocket->getYPos());
     }
     else if (direction == Direction::SOUTH) {
+        cout << "south" << endl;
         bullet = make_shared<Bullet>('|', rocket->getXPos(), rocket->getYPos() + 3);
     }
     else if (direction == Direction::NORTH) {
+        cout << "north" << endl;
         bullet = make_shared<Bullet>('|', rocket->getXPos(), rocket->getYPos() - 3);
     }
     addGameObject(bullet);
