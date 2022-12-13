@@ -158,10 +158,10 @@ bool IceCreamDrop::hitFly() {
 }
 
 void IceCreamDrop::moveIceCream(Action action) {
-    bool fall = isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform();
     IceCream *cream = static_cast<IceCream *>(iceCream.get());
-    cream->updateIceCreamPosition(action, border, fall);
-    if (fall) {
+    cream->updateIceCreamPosition(action, border);
+    while (isEmpty(iceCream->getXPos(), iceCream->getYPos() + 1) && !atLastPlatform()) {
+        iceCream->setYPos(iceCream->getYPos() + 2);
         numOfPlatformsPassed++;
         iceCreamDisplay->inProgress();
         displayHelper();
@@ -169,10 +169,10 @@ void IceCreamDrop::moveIceCream(Action action) {
     if (hitFly()) {
         for (int i = 0; i < 3 * offset; i++) {
             if (action == Action::RIGHT) {
-                cream->updateIceCreamPosition(Action::LEFT, border, fall);
+                cream->updateIceCreamPosition(Action::LEFT, border);
             }
             else if (action == Action::LEFT) {
-                cream->updateIceCreamPosition(Action::RIGHT, border, fall);
+                cream->updateIceCreamPosition(Action::RIGHT, border);
             }
             iceCreamDisplay->hitFlyUpdate(numOfPlatformsPassed);
             displayHelper();

@@ -12,7 +12,7 @@ class IceCream : public Character {
 public:
     IceCream(char c, int x, int y, int height = 1);
     ~IceCream();
-    void updateIceCreamPosition(Action action, shared_ptr<Border> border, bool fall);
+    void updateIceCreamPosition(Action action, shared_ptr<Border> border);
 };
 
 #endif 

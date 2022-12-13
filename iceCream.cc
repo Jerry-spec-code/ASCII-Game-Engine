@@ -8,7 +8,7 @@ IceCream::IceCream(char c, int x, int y, int height): Character{c, x, y, height}
 
 IceCream::~IceCream() {}
 
-void IceCream::updateIceCreamPosition(Action action, shared_ptr<Border> border, bool fall) {
+void IceCream::updateIceCreamPosition(Action action, shared_ptr<Border> border) {
     if(action == Action::RIGHT) {
         this->setXPos(this->getXPos() + 1);
         if(border->onBorder(this->getYPos(), this->getXPos())) {
@@ -20,8 +20,5 @@ void IceCream::updateIceCreamPosition(Action action, shared_ptr<Border> border, 
         if(border->onBorder(this->getYPos(), this->getXPos())) {
             this->setXPos(border->getBorderLength() - 2);
         }
-    }
-    if (fall) {
-        this->setYPos(this->getYPos() + 2);
-    }   
+    } 
 }
