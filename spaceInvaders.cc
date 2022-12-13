@@ -54,6 +54,7 @@ void SpaceInvaders::go() {
                 break;
             }
         }
+        updateView();
     }
     display();
     sleep_for(5s);
