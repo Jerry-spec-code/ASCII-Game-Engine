@@ -1,4 +1,4 @@
-# ASCII Game Engine
+# ASCII Game Engine (CS 246E Project)
 Built a C++ game engine that supports the creation of ASCII art video games using Ncurses and the MVC design pattern, and created two mini games to illustrate the use of the engine’s game objects, movement types, and collision types.
 
 ## Game #1: Ice Cream Drop
